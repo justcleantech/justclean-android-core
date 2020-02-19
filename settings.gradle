@@ -1,2 +1,1 @@
-include ':core-module'
-rootProject.name='Core module'
+include ':app'
