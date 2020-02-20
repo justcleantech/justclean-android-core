@@ -2,7 +2,7 @@
 
 Welcome to Justclean android core module.
 
-How to Implement the module in your project:
+How to Implement the module in your project:\n
 1- clone the module repo. in the same root level directory of your app project.
 2- in setting.gradle add the following lines:
    include ':justclean-core'
