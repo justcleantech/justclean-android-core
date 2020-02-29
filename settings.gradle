@@ -1,1 +1,1 @@
-include ':app', ':justclean_core'
+include ':justclean_core'
