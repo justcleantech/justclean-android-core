@@ -1,1 +1,1 @@
-include ':justclean_core'
+include ':core'

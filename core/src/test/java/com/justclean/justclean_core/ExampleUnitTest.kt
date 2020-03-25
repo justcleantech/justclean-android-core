@@ -1,4 +1,4 @@
-package com.justclean.justclean_core
+package com.justclean.core
 
 import org.junit.Test
 
