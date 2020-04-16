@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="H1Grey">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="H1Purple">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="H1Black">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="H2White">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="H2Grey">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="H2Purple">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="H2Black">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="H3White">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="H3Grey">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="H3Purple">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="H3Black">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="Body1White">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Body1Grey">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="Body1Purple">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="Body1Black">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="EmphasisBodyPurple">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="EmphasisBodyGrey">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="Body2Grey2">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="EmphasisBodyBlack">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="EmphasisBodyWhite">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonDisabledWhite">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textColor">#b3ffffff</item>
+    </style>
+
+    <style name="ButtonWhite">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Subtitle2White">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Subtitle1White">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonGrey">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="ButtonPurple">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="ButtonBlack">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="Subtitle2Grey">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="Subtitle2Purple">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="Subtitle2Black">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="Subtitle1Grey">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="Subtitle1Purple">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="Subtitle1Black">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="Body2White">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Body2Grey">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="Body2Purple">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="Body2Black">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="CaptionWhite">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CaptionGrey">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/text_grey</item>
+    </style>
+
+    <style name="CaptionPurple">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/purple_primary</item>
+    </style>
+
+    <style name="CaptionBlack">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+</resources>
