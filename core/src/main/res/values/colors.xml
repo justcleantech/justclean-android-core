@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#ffffff</color>
+    <color name="white_70">#b3ffffff</color>
     <color name="body_dark">#1b2431</color>
     <color name="purple_primary">#641bb4</color>
     <color name="cyan">#00a8e1</color>
@@ -22,4 +23,6 @@
     <color name="transparent_yellow">#fef9e7</color>
     <color name="transparent_grey">#f3f4f7</color>
     <color name="disabled_purple">#ae8ad6</color>
+    <color name="dark_purple">#4c1da0</color>
+    <color name="colorAccent">#00a8e1</color>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="jc_attributes">
+        <attr name="jc_text" format="reference" />
+        <attr name="jc_background" format="reference" />
+        <attr name="jc_progress" format="boolean" />
+        <attr name="jc_enabled" format="boolean" />
+        <attr name="jc_primary" format="boolean" />
+        <attr name="jc_secondary" format="boolean" />
+        <attr name="jc_font" format="reference" />
+    </declare-styleable>
+</resources>
