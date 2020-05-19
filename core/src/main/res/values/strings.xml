@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">justclean_core</string>
+    <string name="component_one"> My Test Text</string>
 </resources>
