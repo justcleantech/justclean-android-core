@@ -45,6 +45,19 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    api 'com.google.android.material:material:1.1.0'
+    api(
+            "com.mikepenz:fastadapter:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-expandable:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-binding:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-diff:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-drag:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-paged:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-scroll:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-swipe:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-ui:$fastAdapterVersion",
+            "com.mikepenz:fastadapter-extensions-utils:$fastAdapterVersion",
+    )
     //paris to set views styles parametrically
     api 'com.airbnb.android:paris:1.4.0'
     api 'com.google.android.material:material:1.1.0'

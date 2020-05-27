@@ -9,6 +9,9 @@
         <attr name="jc_secondary" format="boolean" />
         <attr name="jc_font" format="reference" />
     </declare-styleable>
+    <declare-styleable name="jc_sheet_attributes">
+
+    </declare-styleable>
     <declare-styleable name="jc_input_attributes">
         <attr name="jc_input_style" format="reference" />
         <attr name="jc_input_hint_color" format="reference" />
