@@ -52,7 +52,7 @@ class ButtonActivity : AppCompatActivity() {
             input.setInputHintText("Hopaaaa")
             input.setInputStyle(R.style.TextInputLayoutStyle)
             input.setTextInputColor(R.color.normal_green)
-            input.setInputType("textEmailAddress")
+            input.setInputType("text")
             input.getError()
             input.withRegex(false,pattern,errorMessage)
             input.setMinChar(7,minErrorMsg)

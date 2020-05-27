@@ -48,56 +48,56 @@ class JCEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
                 context.obtainStyledAttributes(it, R.styleable.jc_input_attributes, 0, 0)
 
             val inputStyle =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_input_style, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_input_style, 0)
             textInputLayout.style {
                 add(inputStyle)
             }
             val hintColor =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_input_hint_color, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_input_hint_color, 0)
             val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(context, hintColor))
             textInputLayout.hintTextColor = colorStateList
             val textInputColor =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_input_text_color, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_input_text_color, 0)
             jcEditText.setTextColor(ContextCompat.getColor(context, textInputColor))
 
             val editTextTheme =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_editText_theme, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_editText_theme, 0)
             jcEditText.style {
                 add(editTextTheme)
             }
             val textSize =
-                typedArray.getDimensionPixelSize(R.styleable.jc_input_attributes_text_size, 0)
+                typedArray.getDimensionPixelSize(R.styleable.jc_input_attributes_jc_text_size, 0)
             jcEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize.toFloat());
 
 
             val endIconDrawable =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_end_icon_drawable, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_end_icon_drawable, 0)
             textInputLayout.endIconDrawable = resources.getDrawable(endIconDrawable, null)
 
             val textCursorDrawable =
-                typedArray.getDrawable(R.styleable.jc_input_attributes_text_cursor_drawable)
+                typedArray.getDrawable(R.styleable.jc_input_attributes_jc_text_cursor_drawable)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 jcEditText.textCursorDrawable = textCursorDrawable
             }
             val inputHintText =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_input_hint_text, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_input_hint_text, 0)
             textInputLayout.hint = resources.getString(inputHintText)
 
-            setInputType(typedArray.getString(R.styleable.jc_input_attributes_input_type) ?: "")
+            setInputType(typedArray.getString(R.styleable.jc_input_attributes_jc_input_type) ?: "")
 
             val mode =
                 TextInputMode.values()[typedArray.getInt(
-                    R.styleable.jc_input_attributes_end_icon_mode,
+                    R.styleable.jc_input_attributes_jc_end_icon_mode,
                     0
                 )]
 
             setEndIconMode(mode)
             val endIconTint =
-                typedArray.getResourceId(R.styleable.jc_input_attributes_end_icon_tint, 0)
+                typedArray.getResourceId(R.styleable.jc_input_attributes_jc_end_icon_tint, 0)
             setEndIconTint(endIconTint)
 
-            val minChar = typedArray.getInteger(R.styleable.jc_input_attributes_min_chars, 1)
-            val maxChar = typedArray.getInteger(R.styleable.jc_input_attributes_max_chars, 1000)
+            val minChar = typedArray.getInteger(R.styleable.jc_input_attributes_jc_min_chars, 1)
+            val maxChar = typedArray.getInteger(R.styleable.jc_input_attributes_jc_max_chars, 1000)
             setMaxChar(maxChar, maxErrorMsg)
             setMinChar(minChar, minErrorMsg)
 
@@ -133,17 +133,17 @@ class JCEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
             }
 
         })
-        jcEditText.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
+        jcEditText.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
-                if (!reg(text)) {
-                    if (isRegex)
+                if (isRegex) {
+                    if (!reg(jcEditText.text.toString()))
                         error.postValue(errorMessage)
                     else  error.postValue("")
                 } else {
-                    if (text.isNotEmpty() && max > 0 && text.length > max) error.postValue(
+                    if (jcEditText.text.toString().isNotEmpty() && max > 0 && jcEditText.text.toString().length > max) error.postValue(
                         maxErrorMsg
                     )
-                    if (text.isNotEmpty() && min > 0 && text.length < min) error.postValue(
+                    if (jcEditText.text.toString().isNotEmpty() && min > 0 && jcEditText.text.toString().length < min) error.postValue(
                         minErrorMsg
                     )
                 }

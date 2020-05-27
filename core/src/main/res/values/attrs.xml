@@ -10,24 +10,24 @@
         <attr name="jc_font" format="reference" />
     </declare-styleable>
     <declare-styleable name="jc_input_attributes">
-        <attr name="input_style" format="reference" />
-        <attr name="input_hint_color" format="reference" />
-        <attr name="input_text_color" format="reference" />
-        <attr name="editText_theme" format="reference" />
-        <attr name="text_size" format="dimension" />
-        <attr name="text_cursor_drawable" format="reference" />
-        <attr name="input_hint_text" format="reference" />
-        <attr name="input_type" format="string" />
-        <attr name="end_icon_drawable" format="reference" />
-        <attr name="min_chars" format="integer" />
-        <attr name="max_chars" format="integer" />
-        <attr name="end_icon_mode" format="enum">
+        <attr name="jc_input_style" format="reference" />
+        <attr name="jc_input_hint_color" format="reference" />
+        <attr name="jc_input_text_color" format="reference" />
+        <attr name="jc_editText_theme" format="reference" />
+        <attr name="jc_text_size" format="dimension" />
+        <attr name="jc_text_cursor_drawable" format="reference" />
+        <attr name="jc_input_hint_text" format="reference" />
+        <attr name="jc_input_type" format="string" />
+        <attr name="jc_end_icon_drawable" format="reference" />
+        <attr name="jc_min_chars" format="integer" />
+        <attr name="jc_max_chars" format="integer" />
+        <attr name="jc_end_icon_mode" format="enum">
             <enum name="none" value="0" />
             <enum name="clear_text" value="1" />
             <enum name="custom" value="2" />
             <enum name="password_toggle" value="3" />
             <enum name="dropdown_menu" value="4" />
         </attr>
-        <attr name="end_icon_tint" format="reference" />
+        <attr name="jc_end_icon_tint" format="reference" />
     </declare-styleable>
 </resources>
