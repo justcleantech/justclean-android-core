@@ -8,16 +8,75 @@
 
     <com.justclean.core.JCButton
         android:id="@+id/jcBtn"
-        android:layout_margin="@dimen/space_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_24"
         app:jc_enabled="true"
+        app:jc_font="@font/roboto_italic"
+        app:jc_primary="true"
         app:jc_progress="true"
         app:jc_text="@string/app_name"
-        app:jc_primary="true"
-        app:jc_font="@font/roboto_italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/ddd"
+        android:background="@drawable/ic_create_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--
+    <attr name="input_style" format="reference" />
+            <attr name="input_hint_color" format="reference" />
+            <attr name="input_text_color" format="reference" />
+            <attr name="editText_color_hint" format="reference" />
+            <attr name="editText_theme" format="reference" />
+            <attr name="text_size" format="reference" />
+            <attr name="text_cursor_drawable" format="reference" />
+            <attr name="input_hint_text" format="reference" />
+            <attr name="input_type" format="string" />
+            <attr name="end_icon_drawable" format="reference" />
+            <attr name="end_icon_mode" format="reference" />
+            <attr name="end_icon_tint" format="reference" />
+    -->
+
+    <com.justclean.core.JCEditText
+        android:id="@+id/jcTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:jc_input_style="@style/InputLayoutTheme"
+        app:jc_min_chars="8"
+        app:jc_max_chars="9"
+        app:jc_editText_theme="@style/Custom"
+        app:jc_end_icon_drawable="@drawable/ic_create_black_24dp"
+        app:jc_end_icon_mode="clear_text"
+        app:jc_end_icon_tint="@color/body_dark"
+        app:jc_input_hint_color="@color/error_red"
+        app:jc_input_hint_text="@string/app_name"
+        app:jc_input_text_color="@color/success_green"
+        app:jc_input_type="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jcBtn"
+        app:jc_text_cursor_drawable="@drawable/cursor"
+        app:jc_text_size="@dimen/x_sm_text_size" />
+
+    <com.justclean.core.JCEditText
+        android:id="@+id/jcTextInputTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:jc_editText_theme="@style/Custom"
+        app:jc_end_icon_drawable="@drawable/ic_create_black_24dp"
+        app:jc_end_icon_mode="clear_text"
+        app:jc_end_icon_tint="@color/body_dark"
+        app:jc_input_hint_color="@color/error_red"
+        app:jc_input_hint_text="@string/app_name"
+        app:jc_input_style="@style/InputLayoutTheme"
+        app:jc_input_text_color="@color/success_green"
+        app:jc_input_type="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jcTextInput"
+        app:jc_max_chars="8"
+        app:jc_min_chars="7"
+        app:jc_text_cursor_drawable="@drawable/cursor"
+        app:jc_text_size="@dimen/x_sm_text_size" />
 </androidx.constraintlayout.widget.ConstraintLayout>
