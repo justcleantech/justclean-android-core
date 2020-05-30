@@ -1,6 +1,7 @@
 package com.justclean.samples
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,19 +25,19 @@ class ButtonActivity : AppCompatActivity() {
         jcBtn.setOnClickListener {
             //  jcBtn.setJcEnabled(false)
             jcBtn.withProgress(false)
-            jcBtn.setJcText("7amada helal")
+            jcBtn.setJcText("Text Changed")
             jcBtn.setJcSecondary()
-            showToast("Hamada mesh Helal")
+            showToast("event clicked")
 
         }
         setJcInput(jcTextInput,jcTextInputTwo)
 
-        ddd.setOnClickListener {
+        txtGoToSheet.setOnClickListener {
             jcTextInput.clearFocus()
             jcTextInputTwo.clearFocus()
-            ddd.hideKeyboard()
+            txtGoToSheet.hideKeyboard()
+            startActivity(Intent(this,BottomSheetActivity::class.java))
         }
-
 
     }
 

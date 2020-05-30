@@ -20,11 +20,20 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/ddd"
-        android:background="@drawable/ic_create_black_24dp"
+
+    <TextView
+        android:padding="@dimen/space_16"
+        android:textColor="@color/white"
+        android:background="@color/error_red"
+        android:elevation="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_32"
+        android:id="@+id/txtGoToSheet"
+        android:text="Go To Action Sheet"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jcBtn" />
     <!--
     <attr name="input_style" format="reference" />
             <attr name="input_hint_color" format="reference" />

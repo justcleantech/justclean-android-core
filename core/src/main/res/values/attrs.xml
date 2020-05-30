@@ -9,6 +9,21 @@
         <attr name="jc_secondary" format="boolean" />
         <attr name="jc_font" format="reference" />
     </declare-styleable>
+    <declare-styleable name="jc_sheet_attributes">
+        <attr name="jc_behavior_peekHeight" format="dimension" />
+        <attr name="jc_sheet_min_height" format="dimension" />
+        <attr name="jc_sheet_max_height" format="dimension" />
+        <attr name="jc_with_close_icon" format="boolean" />
+        <attr name="jc_with_dash_icon" format="boolean" />
+        <attr name="jc_close_icon" format="reference" />
+        <attr name="jc_dash_icon" format="reference" />
+        <attr name="jc_with_title" format="boolean" />
+        <attr name="jc_set_sheet_title" format="reference" />
+        <attr name="jc_sheet_style" format="enum">
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+        </attr>
+    </declare-styleable>
     <declare-styleable name="jc_input_attributes">
         <attr name="jc_input_style" format="reference" />
         <attr name="jc_input_hint_color" format="reference" />

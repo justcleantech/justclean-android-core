@@ -137,15 +137,19 @@ class JCEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
             if (!hasFocus) {
                 if (isRegex) {
                     if (!reg(jcEditText.text.toString()))
-                        error.postValue(errorMessage)
-                    else  error.postValue("")
+                        textInputLayout.error = errorMessage
+                    else textInputLayout.error = null
                 } else {
-                    if (jcEditText.text.toString().isNotEmpty() && max > 0 && jcEditText.text.toString().length > max) error.postValue(
-                        maxErrorMsg
-                    )
-                    if (jcEditText.text.toString().isNotEmpty() && min > 0 && jcEditText.text.toString().length < min) error.postValue(
-                        minErrorMsg
-                    )
+                    if (jcEditText.text.toString()
+                            .isNotEmpty() && max > 0 && jcEditText.text.toString().length > max
+                    ) {
+                        textInputLayout.error = maxErrorMsg
+                    } else if (jcEditText.text.toString()
+                            .isNotEmpty() && min > 0 && jcEditText.text.toString().length < min
+                    ) {
+                        textInputLayout.error = minErrorMsg
+                    } else textInputLayout.error = null
+
                 }
             }
         }
