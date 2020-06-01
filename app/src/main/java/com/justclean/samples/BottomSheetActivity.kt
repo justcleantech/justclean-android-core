@@ -1,16 +1,12 @@
 package com.justclean.samples
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.justclean.core.R
-import com.justclean.core.base.BaseCoreActivity
+import com.justclean.core.base.BaseActivity
 import com.justclean.core.custom.JCBottomSheet
 import com.justclean.samples.items.SimpleItem
 import com.justclean.samples.items.SimpleItemTwo
@@ -20,7 +16,7 @@ import com.mikepenz.fastadapter.listeners.ClickEventHook
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 
 
-class BottomSheetActivity : BaseCoreActivity() {
+class BottomSheetActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

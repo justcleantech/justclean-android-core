@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.justclean.core.R
-import com.justclean.core.base.BaseCoreActivity
+import com.justclean.core.base.BaseActivity
 import com.justclean.core.base.BaseDialog
 import kotlinx.android.synthetic.main.dialog_network.*
 
@@ -23,7 +23,7 @@ class NetworkDialog : BaseDialog() {
         actionRetry.setOnClickListener {
             if (isNetworkConnected()) {
                 dismiss()
-                startActivity(Intent(context!!, BaseCoreActivity::class.java))
+                startActivity(Intent(context!!, BaseActivity::class.java))
             }
         }
         isShowing = true

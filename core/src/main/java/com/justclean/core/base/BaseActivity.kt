@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  * @name Mohamed dawood
  * Copyrights (c) 2020-05-31 Created By Justclean Company
  */
-abstract class BaseCoreActivity : AppCompatActivity(),
+abstract class BaseActivity : AppCompatActivity(),
     ConnectivityReceiver.ConnectivityReceiverListener {
     private val TAG = "BaseActivity"
     private var connectivityReceiver: ConnectivityReceiver? = null
@@ -36,18 +37,6 @@ abstract class BaseCoreActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initConnectivity()
-//
-//        val view = LayoutInflater.from(this).inflate(R.layout.layout_toolbar, null)
-//        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
-//        if (toolbar != null) {
-//            setSupportActionBar(toolbar)
-//            supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM;
-//            supportActionBar!!.setCustomView(R.layout.layout_toolbar);
-//            supportActionBar!!.title = "7mafa";
-//            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-//            showToast("102")
-//        }
-
     }
 
 
@@ -170,6 +159,13 @@ abstract class BaseCoreActivity : AppCompatActivity(),
             unregisterReceiver(connectivityReceiver)
         } catch (ignored: Exception) {
             Log.d(TAG, "onDestroy: ${ignored.message}")
+        }
+    }
+
+    companion object {
+        init {
+            // this method to support old version with vectors
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
     }
 }

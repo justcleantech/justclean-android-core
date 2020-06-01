@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.justclean.core.base.BaseCoreActivity
+import com.justclean.core.base.BaseActivity
 import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import kotlinx.android.synthetic.main.activity_button.*
 
 
-class ButtonActivity : BaseCoreActivity() {
+class ButtonActivity : BaseActivity() {
     private val pattern = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*\$"
     private val errorMessage = "email format is wrong"
     private val minErrorMsg = "min error"

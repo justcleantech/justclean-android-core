@@ -14,21 +14,19 @@ import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import com.justclean.core.base.BaseCoreActivity
 
 
 abstract class BaseDialog : DialogFragment() {
-    var baseActivity: BaseCoreActivity? = null
+    var baseActivity: BaseActivity? = null
         private set
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is BaseCoreActivity) {
+        if (context is BaseActivity) {
             baseActivity = context
         }
     }
 
-    fun showLoading() {}
     fun showDialogDismiss() {
         if (baseActivity != null) {
             baseActivity!!.showDialogDismiss()
@@ -139,14 +137,6 @@ abstract class BaseDialog : DialogFragment() {
 
     fun dismissDialog(tag: String) {
         dismiss()
-    }
-
-
-    companion object {
-        init {
-            // this method to support old version with vectors
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        }
     }
 
 
