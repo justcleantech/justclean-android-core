@@ -1,4 +1,4 @@
-package com.justclean.core
+package com.justclean.core.custom
 
 import android.content.Context
 import android.util.AttributeSet

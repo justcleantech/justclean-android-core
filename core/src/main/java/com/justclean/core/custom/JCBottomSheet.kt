@@ -1,4 +1,4 @@
-package com.justclean.core
+package com.justclean.core.custom
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
+import com.justclean.core.R
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -36,7 +37,8 @@ class JCBottomSheet @JvmOverloads constructor(context: Context, attrs: Attribute
 
         attrs?.let {
             val typedArray =
-                context.obtainStyledAttributes(it, R.styleable.jc_sheet_attributes, 0, 0)
+                context.obtainStyledAttributes(it,
+                    R.styleable.jc_sheet_attributes, 0, 0)
 
             iniSheet()
 

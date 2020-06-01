@@ -1,24 +1,26 @@
 package com.justclean.samples
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.justclean.core.JCBottomSheet
 import com.justclean.core.R
+import com.justclean.core.base.BaseActivity
+import com.justclean.core.custom.JCBottomSheet
+import com.justclean.samples.items.SimpleItem
+import com.justclean.samples.items.SimpleItemTwo
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.listeners.ClickEventHook
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 
-class BottomSheetActivity : AppCompatActivity() {
+
+class BottomSheetActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_sheet)
-
 
         var ITEMS = ArrayList<IItem<*>>()
         for (i in 0..2) {

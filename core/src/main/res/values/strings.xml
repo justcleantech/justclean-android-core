@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">justclean_core</string>
     <string name="component_one"> My Test Text</string>
+    <string name="text_network_connection_failed">Network connection failed</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="action_retry">Retry</string>
 </resources>
