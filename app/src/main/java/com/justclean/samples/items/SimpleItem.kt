@@ -1,4 +1,4 @@
-package com.justclean.samples
+package com.justclean.samples.items
 
 import android.view.View
 import android.widget.TextView

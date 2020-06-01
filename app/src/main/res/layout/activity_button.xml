@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.justclean.samples.ButtonActivity">
 
-    <com.justclean.core.JCButton
+    <com.justclean.core.custom.JCButton
         android:id="@+id/jcBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             <attr name="end_icon_tint" format="reference" />
     -->
 
-    <com.justclean.core.JCEditText
+    <com.justclean.core.custom.JCEditText
         android:id="@+id/jcTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         app:jc_text_cursor_drawable="@drawable/cursor"
         app:jc_text_size="@dimen/x_sm_text_size" />
 
-    <com.justclean.core.JCEditText
+    <com.justclean.core.custom.JCEditText
         android:id="@+id/jcTextInputTwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

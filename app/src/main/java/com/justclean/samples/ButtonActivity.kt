@@ -2,17 +2,17 @@ package com.justclean.samples
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.justclean.core.JCEditText
+import com.justclean.core.base.BaseCoreActivity
+import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import kotlinx.android.synthetic.main.activity_button.*
 
 
-class ButtonActivity : AppCompatActivity() {
+class ButtonActivity : BaseCoreActivity() {
     private val pattern = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*\$"
     private val errorMessage = "email format is wrong"
     private val minErrorMsg = "min error"
@@ -41,7 +41,7 @@ class ButtonActivity : AppCompatActivity() {
 
     }
 
-    private fun setJcInput(vararg inputs:JCEditText){
+    private fun setJcInput(vararg inputs: JCEditText){
         for (input in inputs){
             input.lifecycleOwner = this
             input.setJcTextSize(20)

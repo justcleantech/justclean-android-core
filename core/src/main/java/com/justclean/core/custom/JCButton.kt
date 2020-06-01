@@ -1,4 +1,4 @@
-package com.justclean.core
+package com.justclean.core.custom
 
 import android.content.Context
 import android.os.Build
@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import com.justclean.core.R
 import kotlinx.android.synthetic.main.jc_button.view.*
 
 
@@ -23,7 +22,8 @@ class JCButton @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     init {
         LayoutInflater.from(context).inflate(R.layout.jc_button, this, true)
         attrs?.let {
-            val typedArray = context.obtainStyledAttributes(it, R.styleable.jc_attributes, 0, 0)
+            val typedArray = context.obtainStyledAttributes(it,
+                R.styleable.jc_attributes, 0, 0)
             val text = resources.getString(
                 typedArray
                     .getResourceId(

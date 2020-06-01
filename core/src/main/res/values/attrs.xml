@@ -45,4 +45,9 @@
         </attr>
         <attr name="jc_end_icon_tint" format="reference" />
     </declare-styleable>
+    <declare-styleable name="jc_toolbar_attr">
+        <attr name="jc_toolbar_color" format="color" />
+        <attr name="jc_toolbar_icon" format="reference" />
+        <attr name="jc_toolbar_text" format="reference" />
+    </declare-styleable>
 </resources>

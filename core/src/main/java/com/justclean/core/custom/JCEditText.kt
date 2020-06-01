@@ -1,4 +1,4 @@
-package com.justclean.core
+package com.justclean.core.custom
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -22,6 +22,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.airbnb.paris.extensions.style
 import com.google.android.material.textfield.TextInputLayout
+import com.justclean.core.R
 import kotlinx.android.synthetic.main.jc_input_text.view.*
 
 
@@ -45,7 +46,8 @@ class JCEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
         LayoutInflater.from(context).inflate(R.layout.jc_input_text, this, true)
         attrs?.let {
             val typedArray =
-                context.obtainStyledAttributes(it, R.styleable.jc_input_attributes, 0, 0)
+                context.obtainStyledAttributes(it,
+                    R.styleable.jc_input_attributes, 0, 0)
 
             val inputStyle =
                 typedArray.getResourceId(R.styleable.jc_input_attributes_jc_input_style, 0)
