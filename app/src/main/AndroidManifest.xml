@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity  android:name="com.justclean.samples.BottomSheetActivity"/>
+        <activity  android:name="com.justclean.samples.BaseSampleFragment"/>
         <activity android:theme="@style/InputLayoutTheme" android:name="com.justclean.samples.ButtonActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

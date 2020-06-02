@@ -9,18 +9,19 @@ import android.widget.Toast
 import com.justclean.core.base.BaseActivity
 import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
+import com.justclean.core.base.LayoutRes
+import com.justclean.core.heplers.startActivity
 import kotlinx.android.synthetic.main.activity_button.*
 
 
+@LayoutRes(layout = R.layout.activity_button)
 class ButtonActivity : BaseActivity() {
     private val pattern = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*\$"
     private val errorMessage = "email format is wrong"
     private val minErrorMsg = "min error"
     private val maxErrorMsg = "max error"
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_button)
 
+    override fun onActivityReady(savedInstanceState: Bundle?) {
         jcBtn.setLifeCycleScope(this)
         jcBtn.setOnClickListener {
             //  jcBtn.setJcEnabled(false)
@@ -38,7 +39,9 @@ class ButtonActivity : BaseActivity() {
             txtGoToSheet.hideKeyboard()
             startActivity(Intent(this,BottomSheetActivity::class.java))
         }
-
+        txtGoToFragment.setOnClickListener {
+            startActivity<BaseSampleFragment>()
+        }
     }
 
     private fun setJcInput(vararg inputs: JCEditText){

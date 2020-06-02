@@ -94,7 +94,7 @@ abstract class BaseDialog : DialogFragment() {
         )
 
         // creating the fullscreen dialog
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(root)
         if (dialog.window != null) {

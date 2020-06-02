@@ -36,9 +36,20 @@ abstract class BaseActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getAnnotation().layout)
+        onActivityReady(savedInstanceState)
         initConnectivity()
     }
 
+
+    private fun getAnnotation(): LayoutRes {
+        val annotation = this::class.java.annotations.find { it is LayoutRes } as? LayoutRes
+        if (annotation != null) {
+            return annotation
+        } else {
+            throw KotlinNullPointerException("Please add the LayoutRes annotation")
+        }
+    }
 
     fun showBack(show: Boolean): Boolean {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -161,6 +172,8 @@ abstract class BaseActivity : AppCompatActivity(),
             Log.d(TAG, "onDestroy: ${ignored.message}")
         }
     }
+
+    abstract fun onActivityReady(savedInstanceState: Bundle?)
 
     companion object {
         init {

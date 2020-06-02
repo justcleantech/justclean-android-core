@@ -22,52 +22,53 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:padding="@dimen/space_16"
-        android:textColor="@color/white"
-        android:background="@color/error_red"
-        android:elevation="@dimen/space_16"
-        android:layout_marginTop="@dimen/space_32"
         android:id="@+id/txtGoToSheet"
-        android:text="Go To Action Sheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/space_32"
+        android:background="@color/error_red"
+        android:elevation="@dimen/space_16"
+        android:padding="@dimen/space_16"
+        android:layout_marginStart="@dimen/space_24"
+        android:text="Go To Action Sheet"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jcBtn" />
-    <!--
-    <attr name="input_style" format="reference" />
-            <attr name="input_hint_color" format="reference" />
-            <attr name="input_text_color" format="reference" />
-            <attr name="editText_color_hint" format="reference" />
-            <attr name="editText_theme" format="reference" />
-            <attr name="text_size" format="reference" />
-            <attr name="text_cursor_drawable" format="reference" />
-            <attr name="input_hint_text" format="reference" />
-            <attr name="input_type" format="string" />
-            <attr name="end_icon_drawable" format="reference" />
-            <attr name="end_icon_mode" format="reference" />
-            <attr name="end_icon_tint" format="reference" />
-    -->
+
+    <TextView
+        android:id="@+id/txtGoToFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        android:background="@color/error_red"
+        android:elevation="@dimen/space_16"
+        android:padding="@dimen/space_16"
+        android:text="Fragment Sample"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/txtGoToSheet"
+        app:layout_constraintTop_toBottomOf="@+id/jcBtn" />
+
 
     <com.justclean.core.custom.JCEditText
         android:id="@+id/jcTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:jc_input_style="@style/InputLayoutTheme"
-        app:jc_min_chars="8"
-        app:jc_max_chars="9"
         app:jc_editText_theme="@style/Custom"
         app:jc_end_icon_drawable="@drawable/ic_create_black_24dp"
         app:jc_end_icon_mode="clear_text"
         app:jc_end_icon_tint="@color/body_dark"
         app:jc_input_hint_color="@color/error_red"
         app:jc_input_hint_text="@string/app_name"
+        app:jc_input_style="@style/InputLayoutTheme"
         app:jc_input_text_color="@color/success_green"
         app:jc_input_type="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jcBtn"
+        app:jc_max_chars="9"
+        app:jc_min_chars="8"
         app:jc_text_cursor_drawable="@drawable/cursor"
-        app:jc_text_size="@dimen/x_sm_text_size" />
+        app:jc_text_size="@dimen/x_sm_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jcBtn" />
 
     <com.justclean.core.custom.JCEditText
         android:id="@+id/jcTextInputTwo"
@@ -82,10 +83,10 @@
         app:jc_input_style="@style/InputLayoutTheme"
         app:jc_input_text_color="@color/success_green"
         app:jc_input_type="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jcTextInput"
         app:jc_max_chars="8"
         app:jc_min_chars="7"
         app:jc_text_cursor_drawable="@drawable/cursor"
-        app:jc_text_size="@dimen/x_sm_text_size" />
+        app:jc_text_size="@dimen/x_sm_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jcTextInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>

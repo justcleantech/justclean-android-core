@@ -33,6 +33,14 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -59,11 +67,20 @@ dependencies {
             "com.mikepenz:fastadapter-extensions-utils:$fastAdapterVersion",
     )
     //paris to set views styles parametrically
-    api 'com.airbnb.android:paris:1.4.0'
+    api 'com.airbnb.android:paris:1.5.0'
     api 'com.google.android.material:material:1.1.0'
     api 'joda-time:joda-time:2.10.6'
     api 'com.akexorcist:localizationactivity:1.2.2'
-    api  "com.mikepenz:materialize:1.2.0"
+    api 'com.mikepenz:materialize:1.2.0'
+
+
+    api(
+            "androidx.navigation:navigation-fragment-ktx:$nav_version",
+            "androidx.navigation:navigation-ui-ktx:$nav_version",
+// i will add it after the version be stable now it's alpha
+//            "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
+//            "androidx.navigation:navigation-testing:$nav_version"
+    )
 
 }
 
