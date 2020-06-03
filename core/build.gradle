@@ -66,6 +66,10 @@ dependencies {
             "com.mikepenz:fastadapter-extensions-ui:$fastAdapterVersion",
             "com.mikepenz:fastadapter-extensions-utils:$fastAdapterVersion",
     )
+    api(
+            "org.koin:koin-androidx-ext:2.0.1",
+            "org.koin:koin-androidx-viewmodel:2.0.1"
+    )
     //paris to set views styles parametrically
     api 'com.airbnb.android:paris:1.5.0'
     api 'com.google.android.material:material:1.1.0'

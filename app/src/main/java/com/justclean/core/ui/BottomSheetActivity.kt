@@ -1,4 +1,4 @@
-package com.justclean.samples
+package com.justclean.core.ui
 
 import android.os.Bundle
 import android.view.View
@@ -10,13 +10,12 @@ import com.justclean.core.base.BaseActivity
 import com.justclean.core.base.LayoutRes
 import com.justclean.core.custom.JCBottomSheet
 import com.justclean.core.heplers.startActivity
-import com.justclean.samples.items.SimpleItem
-import com.justclean.samples.items.SimpleItemTwo
+import com.justclean.core.ui.items.SimpleItem
+import com.justclean.core.ui.items.SimpleItemTwo
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.listeners.ClickEventHook
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
-import kotlinx.android.synthetic.main.activity_button.*
 
 
 @LayoutRes(layout = R.layout.activity_bottom_sheet)

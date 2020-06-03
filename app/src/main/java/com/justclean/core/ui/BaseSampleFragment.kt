@@ -1,4 +1,4 @@
-package com.justclean.samples
+package com.justclean.core.ui
 
 import android.os.Bundle
 import com.justclean.core.R

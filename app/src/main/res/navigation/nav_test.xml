@@ -8,6 +8,6 @@
     <fragment
         tools:layout="@layout/fragmnet_test"
         android:id="@+id/fragmentOne"
-        android:name="com.justclean.samples.FragmentOne"
+        android:name="com.justclean.core.ui.FragmentOne"
         android:label="FragmentOne" />
 </navigation>

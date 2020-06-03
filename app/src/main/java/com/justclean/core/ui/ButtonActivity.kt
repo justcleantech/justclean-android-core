@@ -1,4 +1,4 @@
-package com.justclean.samples
+package com.justclean.core.ui
 
 import android.content.Context
 import android.content.Intent
@@ -37,7 +37,8 @@ class ButtonActivity : BaseActivity() {
             jcTextInput.clearFocus()
             jcTextInputTwo.clearFocus()
             txtGoToSheet.hideKeyboard()
-            startActivity(Intent(this,BottomSheetActivity::class.java))
+            startActivity(Intent(this,
+                BottomSheetActivity::class.java))
         }
         txtGoToFragment.setOnClickListener {
             startActivity<BaseSampleFragment>()
