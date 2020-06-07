@@ -13,7 +13,7 @@ import org.koin.core.module.Module
  */
 abstract class BaseApplication : Application() {
 
-    abstract val modules: ArrayList<Module>
+    abstract val modules: List<Module>
 
     override fun onCreate() {
         super.onCreate()
@@ -28,7 +28,6 @@ abstract class BaseApplication : Application() {
             modules(listOf(dataModule))
             //Here is the module which will over ride for any application class in any app
             modules(modules)
-
         }
     }
 

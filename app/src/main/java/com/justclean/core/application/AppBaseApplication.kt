@@ -9,8 +9,8 @@ import org.koin.core.module.Module
  */
 class AppBaseApplication : BaseApplication() {
     
-    override val modules: ArrayList<Module>
-        get() = arrayListOf(viewModelModule)
+    override val modules: List<Module>
+        get() = listOf(viewModelModule)
 
     override fun onCreate() {
         super.onCreate()
