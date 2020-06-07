@@ -1,6 +1,7 @@
 package com.justclean.core.application
 
 import android.app.Application
+import com.justclean.core.di.dataModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -24,10 +25,9 @@ abstract class BaseApplication : Application() {
             androidLogger()
             androidContext(this@BaseApplication)
             //TODO: Here to add the shared module (scheduler provider, composite disposable... etc)
-//            modules(listOf(dataManagerModule, viewModelModule))
+            modules(listOf(dataModule))
             //Here is the module which will over ride for any application class in any app
             modules(modules)
-
         }
     }
 

@@ -8,13 +8,13 @@ import org.koin.core.module.Module
  * Copyrights (c) 6/3/20 Created By Justclean Company
  */
 class AppBaseApplication : BaseApplication() {
-    
+
     override val modules: List<Module>
         get() = listOf(viewModelModule)
 
     override fun onCreate() {
         super.onCreate()
         //TODO: Complete the things which related to your project
-        
+
     }
 }

@@ -5,6 +5,23 @@ buildscript {
         kotlin_version = '1.3.72'
         fastAdapterVersion = '5.0.2'
         nav_version = "2.2.2"
+        rxjava2Version = "2.2.1"
+        rxandroidVersion = "2.1.0"
+        retrofitVersion = "2.6.0"
+        retrofitRxVersion = "2.4.0"
+        okhttpVersion = "4.7.2"
+        playServicesVersion = "16.0.0"
+        placesCompatVersion = "1.0.0"
+        firebaseAuthVersion = '16.0.4'
+        firebaseMessegingVeriosn = '17.3.3'
+        firebaseCoreVersion = '16.0.4'
+        firebaseAuthVersion = '16.0.4'
+        firebaseDatabaseVersion = '16.0.4'
+        firebaseAnalyticsVeriosn = '16.0.4'
+        firebaseDynamicLinks = '17.0.0'
+        firebaseConfigVersion = '16.1.0'
+        firebasePerformanceMonitoringVersion = '16.1.0'
+        crashlyticsLibVersion = '2.9.5'
     }
     repositories {
         google()
@@ -16,6 +33,10 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.google.gms:google-services:4.3.3'
+        // Add the dependency for the Performance Monitoring plugin
+        classpath 'com.google.firebase:perf-plugin:1.3.1'  // Performance Monitoring plugin
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }
 

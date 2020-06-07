@@ -11,7 +11,9 @@ import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import com.justclean.core.base.LayoutRes
 import com.justclean.core.heplers.startActivity
+import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 @LayoutRes(layout = R.layout.activity_button)
@@ -20,6 +22,8 @@ class ButtonActivity : BaseActivity() {
     private val errorMessage = "email format is wrong"
     private val minErrorMsg = "min error"
     private val maxErrorMsg = "max error"
+
+    private val viewModel: SampleViewModel by viewModel()
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
         jcBtn.setLifeCycleScope(this)
@@ -31,22 +35,29 @@ class ButtonActivity : BaseActivity() {
             showToast("event clicked")
 
         }
-        setJcInput(jcTextInput,jcTextInputTwo)
+        setJcInput(jcTextInput, jcTextInputTwo)
 
         txtGoToSheet.setOnClickListener {
             jcTextInput.clearFocus()
             jcTextInputTwo.clearFocus()
             txtGoToSheet.hideKeyboard()
-            startActivity(Intent(this,
-                BottomSheetActivity::class.java))
+            startActivity(
+                Intent(
+                    this,
+                    BottomSheetActivity::class.java
+                )
+            )
         }
         txtGoToFragment.setOnClickListener {
             startActivity<BaseSampleFragment>()
         }
+        showToast(viewModel.test)
+
+
     }
 
-    private fun setJcInput(vararg inputs: JCEditText){
-        for (input in inputs){
+    private fun setJcInput(vararg inputs: JCEditText) {
+        for (input in inputs) {
             input.lifecycleOwner = this
             input.setJcTextSize(20)
             input.setEditTextTheme(R.style.Custom)
@@ -59,17 +70,20 @@ class ButtonActivity : BaseActivity() {
             input.setTextInputColor(R.color.normal_green)
             input.setInputType("text")
             input.getError()
-            input.withRegex(false,pattern,errorMessage)
-            input.setMinChar(7,minErrorMsg)
-            input.setMaxChar(8,maxErrorMsg)
+            input.withRegex(false, pattern, errorMessage)
+            input.setMinChar(7, minErrorMsg)
+            input.setMaxChar(8, maxErrorMsg)
             input.error.postValue("")
             input.setTextWatcher()
         }
+
     }
+
     fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
+
     fun Context.showToast(txt: String) {
         Toast.makeText(this, txt, Toast.LENGTH_LONG).show()
     }
