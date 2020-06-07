@@ -5,7 +5,7 @@ import com.justclean.core.base.BaseViewModel
 import com.justclean.core.data.remote.Model
 import org.koin.core.KoinComponent
 
-class SampleViewModel : BaseViewModel() , KoinComponent {
+class SampleViewModel : BaseViewModel(), KoinComponent {
 
     val test = "Hello ViewModel"
 

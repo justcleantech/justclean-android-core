@@ -32,19 +32,26 @@ class AppSchedulerProvider : SchedulerProvider {
                 .observeOn(ui())
         }
 
-
-    override fun <T> ioToMainFlowableScheduler(strategy: FlowableBackPressureStrategies?): FlowableTransformer<T, T> {
-       return FlowableTransformer { upstream ->
-           when(strategy){
-               BUFFER->{upstream.subscribeOn(io()).observeOn(ui()).onBackpressureBuffer()}
-               LATEST->{upstream.subscribeOn(io()).observeOn(ui()).onBackpressureLatest()}
-               DROP->{upstream.subscribeOn(io()).observeOn(ui()).onBackpressureDrop()}
-               else->{ upstream.subscribeOn(io()).observeOn(ui()).onBackpressureBuffer() }
-           }
+    override fun <T> ioToMainFlowableScheduler(
+        strategy: FlowableBackPressureStrategies?
+    ): FlowableTransformer<T, T> {
+        return FlowableTransformer { upstream ->
+            when (strategy) {
+                BUFFER -> {
+                    upstream.subscribeOn(io()).observeOn(ui()).onBackpressureBuffer()
+                }
+                LATEST -> {
+                    upstream.subscribeOn(io()).observeOn(ui()).onBackpressureLatest()
+                }
+                DROP -> {
+                    upstream.subscribeOn(io()).observeOn(ui()).onBackpressureDrop()
+                }
+                else -> {
+                    upstream.subscribeOn(io()).observeOn(ui()).onBackpressureBuffer()
+                }
+            }
         }
     }
-
-
 
 
     override fun <T> ioToMainMaybeScheduler(): MaybeTransformer<T, T> =
