@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/textView"
+        style="@style/Theme.AppCompat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_8"
+        android:background="@color/orange"
+        android:backgroundTint="@color/body_dark"
+        android:drawableStart="@drawable/ic_close_normal"
+        android:drawableEnd="@drawable/ic_close_normal"
+        android:elevation="@dimen/space_24"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:maxLines="2"
+        android:padding="@dimen/space_8"
+        android:rotationX="22"
+        android:rotationY="-12"
+        android:shadowColor="@color/white"
+        android:shadowDx="22"
+        android:shadowDy="1"
+        android:shadowRadius="44"
+        android:text="TextView | Hello"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textDirection="rtl"
+        android:textSize="@dimen/l_text_size"
+        android:textStyle="italic"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</merge>
