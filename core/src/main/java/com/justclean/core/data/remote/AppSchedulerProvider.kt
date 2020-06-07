@@ -33,7 +33,7 @@ class AppSchedulerProvider : SchedulerProvider {
         }
 
     override fun <T> ioToMainFlowableScheduler(
-        strategy: FlowableBackPressureStrategies?
+        strategy: FlowableBackPressureStrategies
     ): FlowableTransformer<T, T> {
         return FlowableTransformer { upstream ->
             when (strategy) {

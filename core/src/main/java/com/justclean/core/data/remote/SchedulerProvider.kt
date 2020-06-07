@@ -17,7 +17,7 @@ interface SchedulerProvider {
 
     fun ioToMainCompletableScheduler(): CompletableTransformer
 
-    fun <T> ioToMainFlowableScheduler(strategy: FlowableBackPressureStrategies? = LATEST): FlowableTransformer<T, T>
+    fun <T> ioToMainFlowableScheduler(strategy: FlowableBackPressureStrategies = LATEST): FlowableTransformer<T, T>
 
     fun <T> ioToMainMaybeScheduler(): MaybeTransformer<T, T>
 
