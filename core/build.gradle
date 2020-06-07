@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
-
+apply plugin: "androidx.navigation.safeargs.kotlin"
 android {
     compileSdkVersion 29
 
@@ -77,6 +77,23 @@ dependencies {
     api 'com.akexorcist:localizationactivity:1.2.2'
     api 'com.mikepenz:materialize:1.2.0'
 
+    api(
+            // rx java
+            "io.reactivex.rxjava2:rxjava:$rxjava2Version",
+            "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
+    )
+
+    api(
+            //retrofit
+            "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxVersion",
+            "com.squareup.okhttp3:okhttp:$okhttpVersion",
+            "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+            debugImplementation("com.readystatesoftware.chuck:library:1.1.0"),
+            uatImplementation("com.readystatesoftware.chuck:library:1.1.0"),
+
+    )
 
     api(
             "androidx.navigation:navigation-fragment-ktx:$nav_version",
@@ -85,6 +102,7 @@ dependencies {
 //            "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
 //            "androidx.navigation:navigation-testing:$nav_version"
     )
+
 
 }
 

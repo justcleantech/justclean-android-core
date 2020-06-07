@@ -11,7 +11,9 @@ import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import com.justclean.core.base.LayoutRes
 import com.justclean.core.heplers.startActivity
+import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 @LayoutRes(layout = R.layout.activity_button)
@@ -20,6 +22,8 @@ class ButtonActivity : BaseActivity() {
     private val errorMessage = "email format is wrong"
     private val minErrorMsg = "min error"
     private val maxErrorMsg = "max error"
+
+    private val viewModel:SampleViewModel by viewModel ()
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
         jcBtn.setLifeCycleScope(this)
@@ -43,6 +47,9 @@ class ButtonActivity : BaseActivity() {
         txtGoToFragment.setOnClickListener {
             startActivity<BaseSampleFragment>()
         }
+        showToast(viewModel.test)
+
+
     }
 
     private fun setJcInput(vararg inputs: JCEditText){
@@ -65,6 +72,7 @@ class ButtonActivity : BaseActivity() {
             input.error.postValue("")
             input.setTextWatcher()
         }
+
     }
     fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

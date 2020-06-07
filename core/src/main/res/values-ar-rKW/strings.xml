@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">justclean_core</string>
+    <string name="component_one"> My Test Text</string>
+    <string name="text_network_connection_failed">خطآ في الاتصال</string>
+    <string name="connection_error">خطآ في الاتصال بالانترنت</string>
+    <string name="action_retry">اعاده المحاوله</string>
+</resources>
