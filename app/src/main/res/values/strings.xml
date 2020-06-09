@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">justclean-core</string>
+    <string name="go_to_action_sheet">Go To Action Sheet</string>
 </resources>
