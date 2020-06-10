@@ -2,6 +2,7 @@ package com.justclean.core.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.TypedArray
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -10,6 +11,7 @@ import com.justclean.core.base.BaseActivity
 import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import com.justclean.core.base.LayoutRes
+import com.justclean.core.custom.JCTextView
 import com.justclean.core.heplers.startActivity
 import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
@@ -54,6 +56,16 @@ class ButtonActivity : BaseActivity() {
         showToast(viewModel.test)
 
 
+
+        setJcTextView()
+    }
+
+
+    fun setJcTextView(){
+        txtGoToSheet.setJCTextShadow(-20,20,R.color.colorPrimary,20)
+        txtGoToSheet.setJcTextSize(16)
+        txtGoToSheet.setJcRotationX(8)
+        txtGoToSheet.setSpannableStyle(3,15,JCTextView.JcTextSpannableStyle.BOLD_ITALIC,R.color.colorPrimaryLight)
     }
 
     private fun setJcInput(vararg inputs: JCEditText) {
