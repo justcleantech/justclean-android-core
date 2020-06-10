@@ -2,6 +2,7 @@ package com.justclean.core.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.TypedArray
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -59,9 +60,11 @@ class ButtonActivity : BaseActivity() {
         setJcTextView()
     }
 
+
     fun setJcTextView(){
         txtGoToSheet.setJCTextShadow(-20,20,R.color.colorPrimary,20)
-        txtGoToSheet.setJcTextSize(20)
+        txtGoToSheet.setJcTextSize(16)
+        txtGoToSheet.setJcRotationX(8)
         txtGoToSheet.setSpannableStyle(3,15,JCTextView.JcTextSpannableStyle.BOLD_ITALIC,R.color.colorPrimaryLight)
     }
 

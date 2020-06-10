@@ -51,38 +51,36 @@
         <attr name="jc_toolbar_text" format="reference" />
     </declare-styleable>
     <declare-styleable name="jc_textview_attributes">
-        <attr name="jc_textview_theme" format="reference" />
-        <attr name="jc_textview_background" format="reference" />
-        <attr name="jc_textview_backgroundTint" format="reference" />
-        <attr name="jc_textview_drawableStart" format="reference" />
-        <attr name="jc_textview_drawableEnd" format="reference" />
-        <attr name="jc_textview_elevation" format="dimension" />
-        <attr name="jc_textview_fontFamily" format="reference" />
-        <attr name="jc_textview_maxLines" format="integer" />
-        <attr name="jc_textview_rotationX" format="integer" />
-        <attr name="jc_textview_rotationY" format="integer" />
-        <attr name="jc_textview_shadowColor" format="reference" />
-        <attr name="jc_textview_shadowDx" format="integer" />
-        <attr name="jc_textview_shadowDY" format="integer" />
-        <attr name="jc_textview_shadowRadius" format="integer" />
-        <attr name="jc_textview_text" format="dimension" />
-        <attr name="jc_textview_textColor" format="reference" />
-        <attr name="jc_textview_textSize" format="dimension" />
-        <attr name="jc_textview_padding" format="dimension" />
-        <attr name="jc_textview_paddingStart" format="dimension" />
-        <attr name="jc_textview_paddingEnd" format="dimension" />
-        <attr name="jc_textview_paddingTop" format="dimension" />
-        <attr name="jc_textview_paddingBottom" format="dimension" />
-        <attr name="jc_textview_spannable_start" format="integer" />
-        <attr name="jc_textview_spannable_end" format="integer" />
-        <attr name="jc_textview_spannable_color" format="reference" />
-        <attr name="jc_textview_spannable_style" format="enum" >
+        <attr name="jc_theme" format="reference" />
+        <attr name="jc_backgroundTint" format="reference" />
+        <attr name="jc_drawableStart" format="reference" />
+        <attr name="jc_drawableEnd" format="reference" />
+        <attr name="jc_elevation" format="dimension" />
+        <attr name="jc_fontFamily" format="reference" />
+        <attr name="jc_maxLines" format="integer" />
+        <attr name="jc_rotationX" format="integer" />
+        <attr name="jc_rotationY" format="integer" />
+        <attr name="jc_shadowColor" format="reference" />
+        <attr name="jc_shadowDx" format="integer" />
+        <attr name="jc_shadowDY" format="integer" />
+        <attr name="jc_shadowRadius" format="integer" />
+        <attr name="jc_textColor" format="reference" />
+        <attr name="jc_textSize" format="dimension" />
+        <attr name="jc_padding" format="dimension" />
+        <attr name="jc_paddingStart" format="dimension" />
+        <attr name="jc_paddingEnd" format="dimension" />
+        <attr name="jc_paddingTop" format="dimension" />
+        <attr name="jc_paddingBottom" format="dimension" />
+        <attr name="jc_spannable_start" format="integer" />
+        <attr name="jc_spannable_end" format="integer" />
+        <attr name="jc_spannable_color" format="reference" />
+        <attr name="jc_spannable_style" format="enum" >
             <enum name="normal" value="0"/>
             <enum name="bold" value="1"/>
             <enum name="italic" value="2"/>
             <enum name="bold_italic" value="3"/>
         </attr>
-        <attr name="jc_textview_gravity" format="enum">
+        <attr name="jc_gravity" format="enum">
             <enum name="center" value="0" />
             <enum name="start" value="1" />
             <enum name="end" value="2" />
@@ -91,15 +89,15 @@
             <enum name="center_vertical" value="5" />
             <enum name="center_horizontal" value="6" />
         </attr>
-        <attr name="jc_textview_textDirection" format="enum">
+        <attr name="jc_textDirection" format="enum">
             <enum name="ltr" value="0" />
             <enum name="rtl" value="1" />
         </attr>
-        <attr name="jc_textview_textStyle" format="enum">
+        <attr name="jc_textStyle" format="enum">
             <enum name="italic" value="0" />
             <enum name="bold" value="1" />
         </attr>
-        <attr name="jc_textview_textAlignment" format="enum">
+        <attr name="jc_textAlignment" format="enum">
             <enum name="center" value="0" />
         </attr>
     </declare-styleable>
