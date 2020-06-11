@@ -15,8 +15,8 @@
 
         <com.justclean.core.custom.JCToolBar
             android:id="@+id/toolbar"
+            android:layout_height="?attr/actionBarSize"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
             app:jc_toolbar_color="@color/white"
             app:jc_toolbar_icon="@drawable/ic_close_normal"
             app:jc_toolbar_text="@string/action_retry"
