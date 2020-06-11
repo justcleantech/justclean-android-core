@@ -22,6 +22,7 @@ buildscript {
         firebaseConfigVersion = '16.1.0'
         firebasePerformanceMonitoringVersion = '16.1.0'
         crashlyticsLibVersion = '2.9.5'
+        switchButtonVersion = '1.1.0'
     }
     repositories {
         google()

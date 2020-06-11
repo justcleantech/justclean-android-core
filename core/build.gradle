@@ -103,6 +103,10 @@ dependencies {
 //            "androidx.navigation:navigation-testing:$nav_version"
     )
 
+    // switch button
+    api "com.github.angads25:toggle:$switchButtonVersion"
+
+
 
 }
 

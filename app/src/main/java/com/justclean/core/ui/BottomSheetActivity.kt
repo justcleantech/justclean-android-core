@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.paris.R2.id.off
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.justclean.core.R
 import com.justclean.core.base.BaseActivity
@@ -46,6 +47,9 @@ class BottomSheetActivity : BaseActivity() {
         jcSheet.withCloseIcon(View.VISIBLE)
         jcSheet.withSheetTitle(true, "JustClean Sheet")
 
+
+        switch()
+
     }
 
     var testClickTwo = (object : ClickEventHook<IItem<*>>() {
@@ -84,5 +88,12 @@ class BottomSheetActivity : BaseActivity() {
 
     fun testClick(view: View) {
         Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
+    }
+
+
+    private fun switch(){
+        jcSwitch.setOffText(R.string.off)
+        jcSwitch.setOnText(R.string.on)
+        jcSwitch.setOnTextColor(R.color.error_red)
     }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+
+        <Switch
+            android:id="@+id/cSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="5mm"
+            android:checked="false"
+            android:switchMinWidth="14mm"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cSwitchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2mm"
+            android:layout_marginEnd="2mm"
+            android:text="online"
+            android:textColor="@color/body_dark"
+            app:layout_constraintBottom_toBottomOf="@id/cSwitch"
+            app:layout_constraintLeft_toLeftOf="@+id/cSwitch"
+            app:layout_constraintTop_toTopOf="@id/cSwitch" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>
