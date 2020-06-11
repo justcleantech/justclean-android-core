@@ -74,11 +74,11 @@
         <attr name="jc_spannable_start" format="integer" />
         <attr name="jc_spannable_end" format="integer" />
         <attr name="jc_spannable_color" format="reference" />
-        <attr name="jc_spannable_style" format="enum" >
-            <enum name="normal" value="0"/>
-            <enum name="bold" value="1"/>
-            <enum name="italic" value="2"/>
-            <enum name="bold_italic" value="3"/>
+        <attr name="jc_spannable_style" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="bold" value="1" />
+            <enum name="italic" value="2" />
+            <enum name="bold_italic" value="3" />
         </attr>
         <attr name="jc_gravity" format="enum">
             <enum name="center" value="0" />
@@ -100,5 +100,15 @@
         <attr name="jc_textAlignment" format="enum">
             <enum name="center" value="0" />
         </attr>
+    </declare-styleable>
+    <declare-styleable name="jc_switch_attributes">
+        <attr name="jc_text_on" format="reference" />
+        <attr name="jc_text_on_color" format="reference" />
+        <attr name="jc_track_on_drawable" format="reference" />
+        <attr name="jc_switchMinWidth" format="integer" />
+        <attr name="jc_text_off" format="reference" />
+        <attr name="jc_text_off_color" format="reference" />
+        <attr name="jc_track_off_drawable" format="reference" />
+        <attr name="jc_thumb_drawable" format="reference" />
     </declare-styleable>
 </resources>

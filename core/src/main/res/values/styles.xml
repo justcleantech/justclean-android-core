@@ -358,4 +358,8 @@
         <item name="android:colorControlActivated">@color/purple_primary</item>
         <item name="android:colorActivatedHighlight">@color/purple_primary</item>
     </style>
+
+    <style name="Swtich">
+        <item name="switchStyle">@style/Widget.MaterialComponents.CompoundButton.Switch</item>
+    </style>
 </resources>
