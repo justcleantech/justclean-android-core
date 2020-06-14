@@ -6,7 +6,7 @@
                 4-JC_ToolBar.
                 5-JC_SwitchButton.
                 6-JC_Button.
-                7-JC_RecycleWithMaxHeight
+                7-JC_RecycleView
    # BaseClasses
                 1-BaseViewModel
                 2-BaseActivity
