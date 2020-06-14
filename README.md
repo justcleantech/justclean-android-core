@@ -1,12 +1,12 @@
 * this core module has some custom components  and BaseClasses you can use it with all features
-    Components  1-JC_BottomSheet.
+   # Components  1-JC_BottomSheet.
                 2-JC_TextView.
                 3-JC_EditText.
                 4-JC_ToolBar.
                 5-JC_SwitchButton.
                 6-JC_Button.
                 7-JC_RecycleWithMaxHeight
-    BaseClasses
+   # BaseClasses
                 1-BaseViewModel
                 2-BaseActivity
                 3-BaseDialog
@@ -270,11 +270,11 @@
                         # setOnThumbDrawable(drawable: Int)
     ________________________________________________________________________________________________________________________
 
-    # 7-JC_RecycleWithMaxHeight
+    # 7-JCRecyclerView
             * by using this custom component use can set max height for the recycler view
 
             #XML CODE
-                <com.justclean.core.custom.MaxHeightRecyclerView
+                <com.justclean.core.custom.JCRecyclerView
                     android:id="@+id/list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
