@@ -1,5 +1,6 @@
 * this core module has some custom components  and BaseClasses you can use it with all features
-   # Components  1-JC_BottomSheet.
+   # Components  
+                1-JC_BottomSheet.
                 2-JC_TextView.
                 3-JC_EditText.
                 4-JC_ToolBar.
