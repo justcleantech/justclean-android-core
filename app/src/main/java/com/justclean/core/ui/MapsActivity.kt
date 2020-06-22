@@ -43,21 +43,12 @@ class MapsActivity : BaseMapActivity(), GoogleMap.OnCameraIdleListener {
 
         mapReady.observe(this, Observer { ready ->
             if (ready) {
-                //addMapMarkers()
+                addMapMarkers()
             }
 
         })
 
-        val countDownTimer = object : CountDownTimer(3000, 1000) {
-            override fun onFinish() {
-                //clearMarkers()
-            }
-
-            override fun onTick(millisUntilFinished: Long) {
-                //
-            }
-
-        }.start()
+        //clearMarkers()
 
 
     }
@@ -66,8 +57,7 @@ class MapsActivity : BaseMapActivity(), GoogleMap.OnCameraIdleListener {
     private fun addMapMarkers() {
         addMarkers(
             LatLng(29.3790539, 47.9910992), LatLng(29.4790539, 47.9510992),
-            LatLng(29.4490539, 47.8810992),
-            userLocation!!
+            LatLng(29.4490539, 47.8810992)
         )
     }
 }

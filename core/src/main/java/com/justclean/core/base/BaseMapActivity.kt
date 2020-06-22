@@ -355,6 +355,11 @@ open class BaseMapActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnCam
                         )
                     )
                 }
+                markersList.add(
+                    googleMap.addMarker(
+                        MarkerOptions().position((userLocation?:0) as LatLng)
+                    )
+                )
                 val builder: LatLngBounds.Builder = LatLngBounds.Builder()
                 for (marker in markersList) {
                     builder.include(marker.position)
