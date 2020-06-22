@@ -32,7 +32,7 @@ abstract class BaseActivity : AppCompatActivity(),
     private val TAG = "BaseActivity"
     private var connectivityReceiver: ConnectivityReceiver? = null
     private var isRunning: Boolean = false
-    private val dialog = NetworkDialog.newInstance()
+    val dialog = NetworkDialog.newInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

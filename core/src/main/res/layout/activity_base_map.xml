@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".base.BaseMapActivity">
+
+    <com.justclean.core.custom.TouchableWrapper
+        android:id="@+id/viewMapWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cameraZoom="13" />
+    </com.justclean.core.custom.TouchableWrapper>
+
+    <ImageView
+        android:id="@+id/closeMap"
+        android:layout_width="@dimen/space_40"
+        android:layout_height="@dimen/space_40"
+        android:layout_marginStart="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_8"
+        android:background="@drawable/custom_thumb"
+        android:elevation="@dimen/space_8"
+        android:padding="@dimen/space_8"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txtTooltip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/space_4"
+        android:background="@drawable/jc_button_background"
+        android:gravity="center"
+        android:paddingStart="@dimen/space_8"
+        android:paddingEnd="@dimen/space_8"
+        android:paddingBottom="@dimen/space_8"
+        android:text="error location"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_sm_text_size"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/pin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_marker" />
+</androidx.constraintlayout.widget.ConstraintLayout>

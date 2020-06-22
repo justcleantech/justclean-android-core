@@ -111,4 +111,5 @@
         <attr name="jc_track_off_drawable" format="reference" />
         <attr name="jc_thumb_drawable" format="reference" />
     </declare-styleable>
+
 </resources>

@@ -25,7 +25,6 @@ import com.airbnb.paris.utils.setPaddingStart
 import com.airbnb.paris.utils.setPaddingTop
 import com.justclean.core.R
 import com.justclean.core.custom.JCTextView.JcTextGravity.*
-import kotlinx.android.synthetic.main.jc_textview.view.*
 
 
 class JCTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :

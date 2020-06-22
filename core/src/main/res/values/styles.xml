@@ -346,7 +346,7 @@
     </style>
 
     <style name="input_error_style" parent="@android:style/TextAppearance">
-            <item name="android:textSize">12sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="Custom" parent="@android:style/Theme">
@@ -361,5 +361,18 @@
 
     <style name="Swtich">
         <item name="switchStyle">@style/Widget.MaterialComponents.CompoundButton.Switch</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/body_dark</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/body_dark</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/error_red</item>
     </style>
 </resources>

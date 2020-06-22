@@ -67,6 +67,19 @@
         app:layout_constraintStart_toEndOf="@id/txtGoToSheet"
         app:layout_constraintTop_toBottomOf="@+id/jcBtn" />
 
+    <TextView
+        android:id="@+id/txtGoToMap"
+        android:layout_marginTop="@dimen/space_48"
+        android:layout_marginStart="@dimen/space_24"
+        android:padding="@dimen/space_16"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/jc_button_background"
+        android:text="Go To Map"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGoToSheet" />
+
 
     <com.justclean.core.custom.JCEditText
         android:id="@+id/jcTextInput"
