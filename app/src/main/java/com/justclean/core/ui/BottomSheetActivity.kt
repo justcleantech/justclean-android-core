@@ -8,6 +8,7 @@ import com.airbnb.paris.R2.id.off
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.justclean.core.R
 import com.justclean.core.base.BaseActivity
+import com.justclean.core.base.BaseMapActivity
 import com.justclean.core.base.LayoutRes
 import com.justclean.core.custom.JCBottomSheet
 import com.justclean.core.heplers.startActivity
@@ -28,7 +29,7 @@ class BottomSheetActivity : BaseActivity() {
         for (i in 0..2) {
             val item = SimpleItem()
             item.description = "descriptions $i "
-            item.name = "name $i "
+            item.name = "Activity  $i "
             ITEMS.add(item)
         }
         for (i in 0..2) {
@@ -65,7 +66,7 @@ class BottomSheetActivity : BaseActivity() {
             fastAdapter: FastAdapter<IItem<*>>,
             item: IItem<*>
         ) {
-            Toast.makeText(this@BottomSheetActivity, "Test CLick Two", Toast.LENGTH_SHORT).show()
+            startActivity<MapsActivity>()
         }
     })
 

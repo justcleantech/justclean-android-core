@@ -53,6 +53,10 @@ class ButtonActivity : BaseActivity() {
         txtGoToFragment.setOnClickListener {
             startActivity<BaseSampleFragment>()
         }
+
+        txtGoToMap.setOnClickListener {
+            startActivity<MapsActivity>()
+        }
         showToast(viewModel.test)
 
 
