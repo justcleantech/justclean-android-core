@@ -6,12 +6,15 @@ import android.content.res.TypedArray
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.Toast
 import com.justclean.core.base.BaseActivity
 import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import com.justclean.core.base.LayoutRes
 import com.justclean.core.custom.JCTextView
+import com.justclean.core.custom.bottomsheet.BaseBottomSheet
+import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 import com.justclean.core.heplers.startActivity
 import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
@@ -65,11 +68,16 @@ class ButtonActivity : BaseActivity() {
     }
 
 
-    fun setJcTextView(){
-        txtGoToSheet.setJCTextShadow(-20,20,R.color.colorPrimary,20)
+    fun setJcTextView() {
+        txtGoToSheet.setJCTextShadow(-20, 20, R.color.colorPrimary, 20)
         txtGoToSheet.setJcTextSize(16)
         txtGoToSheet.setJcRotationX(8)
-        txtGoToSheet.setSpannableStyle(3,15,JCTextView.JcTextSpannableStyle.BOLD_ITALIC,R.color.colorPrimaryLight)
+        txtGoToSheet.setSpannableStyle(
+            3,
+            15,
+            JCTextView.JcTextSpannableStyle.BOLD_ITALIC,
+            R.color.colorPrimaryLight
+        )
     }
 
     private fun setJcInput(vararg inputs: JCEditText) {
@@ -103,4 +111,20 @@ class ButtonActivity : BaseActivity() {
     fun Context.showToast(txt: String) {
         Toast.makeText(this, txt, Toast.LENGTH_LONG).show()
     }
+
+    fun openModalSheet(view: View) {
+        val sheet = BaseBottomSheet(getSheetContentView(), getSheetDataSource())
+        sheet.show(supportFragmentManager, null)
+    }
+
+    private fun getSheetContentView(): View {
+        val imageView = ImageView(this)
+        imageView.setImageResource(R.drawable.ic_network_error)
+        return imageView
+    }
+    private fun getSheetDataSource() = BottomSheetDataSource(
+        isDragVisible = true,
+        isCloseVisible = true,
+        title = "Jimmy Bottom Sheet"
+    )
 }
