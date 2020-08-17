@@ -2,20 +2,17 @@ package com.justclean.core.ui
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.TypedArray
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import com.justclean.core.base.BaseActivity
 import com.justclean.core.custom.JCEditText
 import com.justclean.core.R
 import com.justclean.core.base.LayoutRes
 import com.justclean.core.custom.JCTextView
-import com.justclean.core.custom.bottomsheet.BaseBottomSheet
+import com.justclean.core.custom.bottomsheet.CustomBottomSheet
 import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 import com.justclean.core.heplers.startActivity
 import com.justclean.core.ui.viewmodels.SampleViewModel
@@ -116,7 +113,7 @@ class ButtonActivity : BaseActivity() {
     }
 
     fun openCustomView(view: View) {
-        BaseBottomSheet(getSheetContentView(), getSheetDataSource()).show(
+        CustomBottomSheet(getSheetContentView(), getSheetDataSource()).show(
             supportFragmentManager,
             null
         )
