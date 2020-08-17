@@ -1,5 +1,6 @@
 package com.justclean.core.custom.bottomsheet
 
+import android.app.Dialog
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
@@ -7,18 +8,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.justclean.core.R
 import com.justclean.core.heplers.gone
 import com.justclean.core.heplers.visible
 
-class BaseBottomSheet(
-    private val contentView: View,
+open class BaseBottomSheet(
+    private val contentView: View? = null,
     private val dataSource: BottomSheetDataSource
 ) : BottomSheetDialogFragment() {
 
@@ -30,10 +29,27 @@ class BaseBottomSheet(
     private lateinit var titleTextView: TextView
     private lateinit var dragIndicator: View
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        bottomSheetDialog.setOnShowListener {
+            bottomSheetLayout =
+                bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
+            bottomSheetLayout?.background = getBackgroundDrawable()
+            bottomSheetDialog.window?.setDimAmount(dataSource.dimLevel)
+            setupCallbacks(BottomSheetBehavior.from(bottomSheetLayout!!))
+        }
+        return bottomSheetDialog
+    }
+
+    private fun setupCallbacks(behavior: BottomSheetBehavior<FrameLayout>) {
+        behavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+            override fun onStateChanged(bottomSheet: View, newState: Int) {}
+        })
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.base_bottom_sheet, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,12 +57,11 @@ class BaseBottomSheet(
         closeImageView = view.findViewById(R.id.close_icon)
         dragIndicator = view.findViewById(R.id.drag_indicator)
         sheetLayout = view.findViewById(R.id.layout_container)
-        sheetLayout.addView(contentView)
+        contentView?.let { sheetLayout.addView(it) }
         setupDialogContent()
     }
 
     private fun setupDialogContent() {
-        setBackground()
 
         if (dataSource.title != null)
             titleTextView.text = dataSource.title
@@ -62,18 +77,6 @@ class BaseBottomSheet(
             dragIndicator.visible()
         else
             dragIndicator.gone()
-
-        dialog?.window?.setDimAmount(dataSource.dimLevel)
-    }
-
-
-    private fun setBackground() {
-        bottomSheetDialog = dialog as BottomSheetDialog
-        bottomSheetDialog.setOnShowListener {
-            bottomSheetLayout =
-                bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
-            bottomSheetLayout?.background = getBackgroundDrawable()
-        }
     }
 
     private fun getBackgroundDrawable(): Drawable {
