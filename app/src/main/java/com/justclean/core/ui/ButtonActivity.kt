@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.TypedArray
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import com.justclean.core.base.BaseActivity
@@ -18,6 +20,7 @@ import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 import com.justclean.core.heplers.startActivity
 import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
+import kotlinx.android.synthetic.main.bottom_custom_view.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -112,19 +115,30 @@ class ButtonActivity : BaseActivity() {
         Toast.makeText(this, txt, Toast.LENGTH_LONG).show()
     }
 
-    fun openModalSheet(view: View) {
-        val sheet = BaseBottomSheet(getSheetContentView(), getSheetDataSource())
-        sheet.show(supportFragmentManager, null)
+    fun openCustomView(view: View) {
+        BaseBottomSheet(getSheetContentView(), getSheetDataSource()).show(
+            supportFragmentManager,
+            null
+        )
+    }
+
+    fun openCustomLayout(view: View) {
+        ExampleBottomSheet(BottomSheetDataSource()).show(supportFragmentManager, null)
     }
 
     private fun getSheetContentView(): View {
-        val imageView = ImageView(this)
-        imageView.setImageResource(R.drawable.ic_network_error)
-        return imageView
+        val view = LayoutInflater.from(this).inflate(R.layout.bottom_custom_view, null)
+        view.actionButton.setOnClickListener {
+            showToast("Thanks For Using Me !")
+        }
+        return view
     }
+
     private fun getSheetDataSource() = BottomSheetDataSource(
-        isDragVisible = true,
+        isDragVisible = false,
         isCloseVisible = true,
-        title = "Jimmy Bottom Sheet"
+        title = "Jimmy Bottom Sheet",
+        dimLevel = 0.75f
     )
+
 }
