@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.justclean.core.R
-import com.justclean.core.custom.bottomsheet.BaseBottomSheet
+import com.justclean.core.custom.bottomsheet.CustomBottomSheet
 import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 
 class ExampleBottomSheet(dataSource: BottomSheetDataSource) :
-    BaseBottomSheet(dataSource = dataSource) {
+    CustomBottomSheet(dataSource = dataSource) {
 
     override fun onCreateView(
         inflater: LayoutInflater,
