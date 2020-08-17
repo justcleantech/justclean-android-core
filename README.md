@@ -18,6 +18,8 @@ This core module has been created to accelerate the development process by reduc
       5. [JCSwitchButton](#JCSwitchButton)
       6. [JCButton](#JCButton)
       7. [JCRecycleView](#JCRecycleView)
+      8. [CustomBottomSheet](#CustomBottomSheet)
+      
    2. [Base Classes](#base)
       1. [BaseViewModel](#BaseViewModel)
       1. [BaseActivity](#BaseActivity)
@@ -257,6 +259,32 @@ jc_sheet_style           | primary,secondary   |
 ```
 ```kotlin
    list.maxHeight = YOUR_MAX_HEIGHT_VALUE
+```
+---
+
+<a name="CustomBottomSheet"></a>
+#### 8. CustomBottomSheet
+```kotlin
+   CustomBottomSheet(getSheetContentView(), getSheetDataSource()).show(supportFragmentManager, null)
+   
+    private fun getSheetContentView(): View {
+        val view = LayoutInflater.from(this).inflate(R.layout.bottom_custom_view, null)
+        view.actionButton.setOnClickListener { showToast("Thanks For Using Me !") }
+        return view
+    }
+    
+    private fun getSheetDataSource() = BottomSheetDataSource(
+        title = null,
+        dimLevel = 0.5f,
+        topLeftCorner = 50f,
+        topRightCorner = 50f,
+        bottomLeftCorner = 0f,
+        bottomRightCorner = 0f,
+        isDragVisible = false,
+        isCloseVisible = false,
+        closeIcon = R.drawable.ic_close_normal, 
+        backgroundColor = android.graphics.Color.WHITE
+    )
 ```
 ---
 
