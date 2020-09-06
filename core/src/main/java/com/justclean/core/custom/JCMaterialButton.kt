@@ -34,4 +34,9 @@ class JCMaterialButton: MaterialButton {
         attrs,
         defStyleAttr
     )
+
+    //TODO
+    //1- Ability to change loader color
+    //2- Ability to change loader margins
+    //3- Ability to stop loading and get old text back
 }
