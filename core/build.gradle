@@ -74,7 +74,7 @@ dependencies {
     )
     //paris to set views styles parametrically
     api 'com.airbnb.android:paris:1.5.0'
-    api 'com.google.android.material:material:1.1.0'
+    api 'com.google.android.material:material:1.2.0'
     api 'joda-time:joda-time:2.10.6'
     api 'com.akexorcist:localizationactivity:1.2.2'
     api 'com.mikepenz:materialize:1.2.0'
