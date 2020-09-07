@@ -1,42 +1,90 @@
 package com.justclean.core.custom
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.text.SpannableString
+import android.text.Spanned
 import android.util.AttributeSet
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.google.android.material.button.MaterialButton
+import com.justclean.core.R
+import com.justclean.core.heplers.DrawableSpan
 
-class JCMaterialButton: MaterialButton {
+/**
+ * Subclass of MaterialButton adding the loading feature with start() and end() methods
+ * @property loaderPadding Int to be fetched from xml if custom value passed default is 50
+ * @property loaderColor Int to be fetched from xml if custom color passed default is currentTextColor
+ * @property buttonText String backup of original text ot be used after loading end
+ * @property callback to invalidate the progress drawable before using it
+ * @constructor fetch the styled attributes if exist or use the defaults
+ */
+class JCMaterialButton(context: Context, attrs: AttributeSet) :
+    MaterialButton(context, attrs) {
+
+    private var loaderPadding: Int
+    private var loaderColor: Int
+    private var buttonText: String
+
+    init {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCMaterialButton, 0, 0)
+        loaderColor = typedArray.getColor(R.styleable.JCMaterialButton_loaderColor, currentTextColor)
+        loaderPadding = typedArray.getInteger(R.styleable.JCMaterialButton_loaderPadding, 50)
+        buttonText = text.toString()
+        typedArray.recycle()
+    }
 
     /**
-     * Simple constructor to use when creating a JCMaterialButton from code.
-     * @param context The Context the view is running in, through which it can
-     * access the current theme, resources, etc.
-     **/
-    constructor(context: Context) : super(context)
-
-    /**
-     * @param context The Context the view is running in, through which it can
-     * access the current theme, resources, etc.
-     * @param attrs The attributes of the XML Button tag being used to inflate the view.
+     * Backup the button text to be restored when loading end
+     * Convert the progressDrawable to DrawableSpan with applying the padding
+     * Create spannableString by appending the loadingString to the button text
+     * Assign the progressDrawable callback and start the loading
+     * Set the spannableString as the new text for the button
+     * @param loadingString String?
      */
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    fun startLoading(loadingString: String? = null) {
+        buttonText = text.toString()
+        val progressDrawable = getProgressDrawable()
+        val drawableSpan = DrawableSpan(progressDrawable, loaderPadding)
+        val spannableString = SpannableString(loadingString ?: "$text ").apply {
+            setSpan(drawableSpan, length - 1, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        progressDrawable.callback = callback
+        progressDrawable.start()
+        text = spannableString
+    }
 
     /**
-     * @param context The Context the view is running in, through which it can
-     * access the current theme, resources, etc.
-     * @param attrs The attributes of the XML Button tag being used to inflate the view.
-     * @param defStyleAttr The resource identifier of an attribute in the current theme
-     * whose value is the the resource id of a style. The specified style’s
-     * attribute values serve as default values for the button. Set this parameter
-     * to 0 to avoid use of default values.
+     * Create progress drawable with large style
+     * Change the drawable tint color
+     * Define bounds to show drawable correctly
+     * @return CircularProgressDrawable customized instance
      */
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
+    private fun getProgressDrawable() = CircularProgressDrawable(context).apply {
+        setStyle(CircularProgressDrawable.LARGE)
+        setColorSchemeColors(loaderColor)
+        val size = (centerRadius + strokeWidth).toInt() * 2
+        setBounds(0, 0, size, size)
+    }
 
-    //TODO
-    //1- Ability to change loader color
-    //2- Ability to change loader margins
-    //3- Ability to stop loading and get old text back
+    /**
+     * Register callbacks to invalidate the button view
+     * for redrawing the loader correctly before using it
+     */
+    private val callback = object : Drawable.Callback {
+        override fun unscheduleDrawable(who: Drawable, what: Runnable) {}
+        override fun scheduleDrawable(who: Drawable, what: Runnable, `when`: Long) {}
+        override fun invalidateDrawable(who: Drawable) {
+            this@JCMaterialButton.invalidate()
+        }
+    }
+
+    /**
+     * Change the button text with the old text to
+     * remove the loader if no custom text passed
+     * @param endString String? custom text to be displayed
+     */
+    fun endLoading(endString: String? = null) {
+        text = endString ?: buttonText
+    }
 }

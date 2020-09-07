@@ -14,7 +14,6 @@
         app:jc_enabled="true"
         app:jc_font="@font/roboto_italic"
         app:jc_primary="true"
-        app:jc_progress="true"
         app:jc_text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -25,30 +24,30 @@
         android:id="@+id/txtGoToSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/success_green"
         android:layout_marginStart="@dimen/space_24"
         android:layout_marginTop="@dimen/space_32"
-        android:drawableEnd="@drawable/ic_back_arrow"
+        android:background="@color/success_green"
         android:drawableStart="@drawable/ic_back_arrow"
+        android:drawableEnd="@drawable/ic_back_arrow"
         android:elevation="@dimen/space_16"
         android:fontFamily="@font/dubai_regular"
         android:gravity="top"
         android:maxLines="3"
+        android:paddingStart="20dp"
         android:rotationX="-22"
         android:rotationY="22"
         android:shadowColor="@color/colorPrimaryLight"
-        android:shadowDy="-22"
         android:shadowDx="22"
-        android:paddingStart="20dp"
-        android:textSize="@dimen/sm_text_size"
+        android:shadowDy="-22"
         android:shadowRadius="22"
         android:text="@string/go_to_action_sheet"
+        android:textAlignment="center"
         android:textColor="@color/md_black_1000"
         android:textDirection="rtl"
-        android:textAlignment="center"
-        app:jc_spannable_start="8"
-        app:jc_spannable_end="12"
+        android:textSize="@dimen/sm_text_size"
         app:jc_spannable_color="@color/success_green"
+        app:jc_spannable_end="12"
+        app:jc_spannable_start="8"
         app:jc_spannable_style="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jcBtn" />
@@ -69,14 +68,14 @@
 
     <TextView
         android:id="@+id/txtGoToMap"
-        android:layout_marginTop="@dimen/space_48"
-        android:layout_marginStart="@dimen/space_24"
-        android:padding="@dimen/space_16"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_48"
         android:background="@drawable/jc_button_background"
+        android:padding="@dimen/space_16"
         android:text="Go To Map"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGoToSheet" />
 
@@ -123,34 +122,39 @@
 
     <Button
         android:id="@+id/bottomCustomView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="openCustomView"
         android:text="Bottom Custom View"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/bottomCustomLayout"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.justclean.core.custom.JCMaterialButton
-        android:text="JC Material Button"
-        app:layout_constraintTop_toBottomOf="@id/bottomCustomView"
+        android:id="@+id/materialButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/purple_primary"
+        android:layout_height="60dp"
         android:layout_margin="20dp"
-        app:cornerRadius="50dp"/>
+        android:onClick="materialButtonClicked"
+        android:text="I'm fancy button"
+        app:backgroundTint="@color/purple_primary"
+        app:cornerRadius="50dp"
+        app:layout_constraintTop_toBottomOf="@id/bottomCustomView"
+        app:loaderColor="@color/yellow"
+        app:strokeColor="@color/yellow"
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/bottomCustomLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="openCustomLayout"
         android:text="Bottom Custom Layout"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/bottomCustomView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toEndOf="@id/bottomCustomView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

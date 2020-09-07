@@ -27,6 +27,7 @@ class ButtonActivity : BaseActivity() {
     private val errorMessage = "email format is wrong"
     private val minErrorMsg = "min error"
     private val maxErrorMsg = "max error"
+    private var loadingStarted = false
 
     private val viewModel: SampleViewModel by viewModel()
 
@@ -137,5 +138,13 @@ class ButtonActivity : BaseActivity() {
         title = "Jimmy Bottom Sheet",
         dimLevel = 0.75f
     )
+
+    fun materialButtonClicked(view: View) {
+        if (loadingStarted)
+            materialButton.endLoading()
+        else
+            materialButton.startLoading()
+        loadingStarted = !loadingStarted
+    }
 
 }
