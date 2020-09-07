@@ -112,4 +112,9 @@
         <attr name="jc_thumb_drawable" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="JCMaterialButton">
+        <attr name="loaderPadding" format="integer" />
+        <attr name="loaderColor" format="color" />
+    </declare-styleable>
+
 </resources>

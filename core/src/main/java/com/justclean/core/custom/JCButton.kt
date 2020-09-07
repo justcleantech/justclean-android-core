@@ -10,10 +10,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.justclean.core.R
-import com.justclean.core.heplers.ReinventTheWheel
 import kotlinx.android.synthetic.main.jc_button.view.*
 
-@ReinventTheWheel
 class JCButton @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     FrameLayout(context, attrs) {
 
