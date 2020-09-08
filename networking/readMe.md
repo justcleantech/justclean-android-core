@@ -1,4 +1,4 @@
-# Welcome to Jc-Network-Kit
+# Welcome to JC-Network-Kit
 Please use this guide to help you going through the kit and get familier with it's component and usage
 
 
@@ -232,7 +232,7 @@ PROS                            |  CONS                     |
 One line API Call               | - |
 Ready to use network layer      | - |
 No extra configration required  | - |
-Serve any usecase               | - |
+Serves any usecase              | - |
 Project independant             | - |
 -| Force you using Koin         |
 -| Response mapping required    |
