@@ -137,6 +137,8 @@
         android:layout_height="60dp"
         android:layout_margin="20dp"
         android:onClick="materialButtonClicked"
+        app:icon="@drawable/ic_close_normal"
+        app:iconPadding="-10dp"
         android:text="I'm fancy button"
         app:backgroundTint="@color/purple_primary"
         app:cornerRadius="50dp"

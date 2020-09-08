@@ -15,9 +15,9 @@ import com.justclean.core.custom.JCTextView
 import com.justclean.core.custom.bottomsheet.CustomBottomSheet
 import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 import com.justclean.core.heplers.startActivity
+import com.justclean.sample.network.ApiManagerRepository
 import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
-import kotlinx.android.synthetic.main.bottom_custom_view.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,6 +32,11 @@ class ButtonActivity : BaseActivity() {
     private val viewModel: SampleViewModel by viewModel()
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
+
+        ApiManagerRepository.getLanguages().subscribe {
+            Toast.makeText(this, it.data[0].name, Toast.LENGTH_LONG).show()
+        }
+
         jcBtn.setLifeCycleScope(this)
         jcBtn.setOnClickListener {
             //  jcBtn.setJcEnabled(false)

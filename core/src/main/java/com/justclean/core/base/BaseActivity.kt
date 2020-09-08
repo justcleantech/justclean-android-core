@@ -4,21 +4,17 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.justclean.core.R
 import com.justclean.core.heplers.NetworkUtils
 import com.justclean.core.heplers.showLongToast
-import com.justclean.core.network.ConnectivityReceiver
-import com.justclean.core.network.NetworkDialog
+import com.justclean.sample.network.ConnectivityReceiver
+import com.justclean.sample.network.NetworkDialog
 import com.mikepenz.materialize.util.KeyboardUtil
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
