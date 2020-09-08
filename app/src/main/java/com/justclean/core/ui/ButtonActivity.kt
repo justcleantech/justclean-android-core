@@ -33,10 +33,6 @@ class ButtonActivity : BaseActivity() {
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
 
-        ApiManagerRepository.getLanguages().subscribe {
-            Toast.makeText(this, it.data[0].name, Toast.LENGTH_LONG).show()
-        }
-
         jcBtn.setLifeCycleScope(this)
         jcBtn.setOnClickListener {
             //  jcBtn.setJcEnabled(false)
