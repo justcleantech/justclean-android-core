@@ -1,4 +1,4 @@
-package com.justclean.sample.network
+package com.justclean.core.network
 
 import com.justclean.networking.Model
 import com.justclean.networking.NetworkController
