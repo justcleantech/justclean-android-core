@@ -1,4 +1,4 @@
-package com.justclean.sample.network
+package com.justclean.core.network
 
 import android.content.BroadcastReceiver
 import android.content.Context

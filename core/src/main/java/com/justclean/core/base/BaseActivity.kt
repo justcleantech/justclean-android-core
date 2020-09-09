@@ -13,8 +13,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.justclean.core.R
 import com.justclean.core.heplers.NetworkUtils
 import com.justclean.core.heplers.showLongToast
-import com.justclean.sample.network.ConnectivityReceiver
-import com.justclean.sample.network.NetworkDialog
+import com.justclean.core.network.ConnectivityReceiver
+import com.justclean.core.network.NetworkDialog
 import com.mikepenz.materialize.util.KeyboardUtil
 import kotlinx.android.synthetic.main.layout_toolbar.*
 

@@ -1,9 +1,8 @@
-package com.justclean.sample.network
+package com.justclean.core.network
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.justclean.core.R
-import com.justclean.sample.network.ApiManagerRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*

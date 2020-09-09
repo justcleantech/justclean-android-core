@@ -1,4 +1,4 @@
-package com.justclean.sample.network
+package com.justclean.core.network
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement

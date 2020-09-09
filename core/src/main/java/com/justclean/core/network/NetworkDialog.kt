@@ -1,4 +1,4 @@
-package com.justclean.sample.network
+package com.justclean.core.network
 
 import android.app.Dialog
 import android.content.DialogInterface
