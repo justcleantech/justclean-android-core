@@ -11,7 +11,7 @@ class SampleViewModel : BaseViewModel(), KoinComponent {
 
     init {
         helloKoin()
-        schedulerProvider.testScheduler()
+//        schedulerProvider.testScheduler()
         Log.d("TestKoin", test)
     }
 
