@@ -17,7 +17,6 @@ import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 import com.justclean.core.heplers.startActivity
 import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
-import kotlinx.android.synthetic.main.bottom_custom_view.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -64,9 +63,11 @@ class ButtonActivity : BaseActivity() {
         }
         showToast(viewModel.test)
 
-
-
         setJcTextView()
+
+        openRecycler.setOnClickListener {
+            startActivity(Intent(this, RecyclerDemoActivity::class.java))
+        }
     }
 
 
@@ -127,9 +128,9 @@ class ButtonActivity : BaseActivity() {
 
     private fun getSheetContentView(): View {
         val view = LayoutInflater.from(this).inflate(R.layout.bottom_custom_view, null)
-        view.actionButton.setOnClickListener {
-            showToast("Thanks For Using Me !")
-        }
+//        view.actionButton.setOnClickListener {
+//            showToast("Thanks For Using Me !")
+//        }
         return view
     }
 

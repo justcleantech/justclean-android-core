@@ -19,20 +19,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.justclean.core.network.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name="com.justclean.core.network.MainActivity"/>
+        <activity android:name=".ui.RecyclerDemoActivity"/>
         <activity android:name=".ui.MapsActivity" />
         <activity android:name=".ui.BottomSheetActivity" />
         <activity android:name=".ui.BaseSampleFragment" />
         <activity
             android:name=".ui.ButtonActivity"
             android:theme="@style/InputLayoutTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
