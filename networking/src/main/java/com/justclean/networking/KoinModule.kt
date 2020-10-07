@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 val dataManagerModule = module {
@@ -16,7 +16,7 @@ val dataManagerModule = module {
             .client(client.build())
             .baseUrl("https://google.com")
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create()).build()
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
 
         retrofit.create(APIService::class.java)
     }

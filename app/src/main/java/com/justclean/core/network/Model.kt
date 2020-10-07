@@ -1,4 +1,4 @@
-package com.justclean.networking
+package com.justclean.core.network
 
 data class Model<Data>(
     val data: Data,
