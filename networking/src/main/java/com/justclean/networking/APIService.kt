@@ -1,15 +1,13 @@
 package com.justclean.networking
 
 import com.google.gson.JsonElement
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Flowable
 import retrofit2.http.*
-import java.time.temporal.TemporalQueries
 
 interface APIService {
 
     @GET()
-    fun getRequest(@Url fullUrl: String, @QueryMap queries: Map<String, String>? = HashMap()): Flowable<JsonElement>
+    fun getRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): Flowable<JsonElement>
 
     @POST()
     fun postRequest(@Url fullUrl: String, @Body requestBody: RequestBody): Flowable<JsonElement>

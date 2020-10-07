@@ -10,7 +10,7 @@ object NetworkController: KoinComponent {
 
     fun processRequest(type: RequestType, fullUrl: String) =
         when (type) {
-            is GET -> request.getRequest(fullUrl)
+            is GET -> request.getRequest(fullUrl, type.queries)
             is POST -> request.postRequest(fullUrl, type.body)
             is PUT -> request.putRequest(fullUrl, type.body)
             is PATCH -> request.patchRequest(fullUrl, type.body)
