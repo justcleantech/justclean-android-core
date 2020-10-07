@@ -121,7 +121,7 @@ def githubProperties = new Properties()
 githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 def getVersionName = { ->
-    return "0.1" // Replace with version Name
+    return "1.0-alpha01" // Replace with version Name
 }
 
 def getArtificatId = { ->
@@ -131,7 +131,7 @@ def getArtificatId = { ->
 publishing {
     publications {
         bar(MavenPublication) {
-            groupId 'com.justclean.core'
+            groupId 'com.justclean'
             artifactId getArtificatId()
             version getVersionName()
             artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
