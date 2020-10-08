@@ -79,6 +79,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGoToSheet" />
 
+    <TextView
+        android:id="@+id/networkActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_48"
+        android:background="@drawable/jc_button_background"
+        android:padding="@dimen/space_16"
+        android:text="Test Networking"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGoToSheet" />
 
     <com.justclean.core.custom.JCEditText
         android:id="@+id/jcTextInput"
