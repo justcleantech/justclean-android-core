@@ -9,15 +9,15 @@ Please use this guide to help you going through the kit and get familier with it
     1. [APIService](#api)
     2. [RequestType](#type)
     3. [NetworkController](#controller)
-    4. [KoinModule](#koin)
-    5. [Model](#model)
-    6. [RequestBody](#body)
+    4. [ServiceBuilder](#builder)
+    5. [RequestBody](#body)
     
 2. [Usage](#usage)
-    1. [ApiEndPoints](#endpoints)
-    2. [Repository](#repository)
-    3. [JsonDeserializer](#serializer)
-    4. [ViewModel](#viewmodel)
+    1. [Initiation](#init)
+    2. [ApiEndPoints](#endpoints)
+    3. [Repository](#repository)
+    4. [JsonDeserializer](#serializer)
+    5. [ViewModel](#viewmodel)
 
 3. [Final Thoughts](#final)
     1. [PROS & CONS](#pros)
@@ -82,64 +82,65 @@ sealed class RequestType {
 <a name="controller"></a>
 #### 3. NetworkController
 
-Serves as the Network-Kit gateway for the cosnumer to be able to place requests
+Serves as the Network-Kit gateway for the consumer to be able to place requests
+Also give the ability to configure interceptors and timeout through init() method
 ```kotlin
-object NetworkController: KoinComponent {
+object NetworkController {
 
-    private val request: APIService by inject()
+    private lateinit var request: APIService
 
-    fun processRequest(type: RequestType, fullUrl: String) =
-        when (type) {
+    fun init(interceptors: List<Interceptor> = listOf(), debugTimeOut: Long = 30, releaseTimeOut: Long = 10) {
+        request = ServiceBuilder.buildService(interceptors, debugTimeOut, releaseTimeOut)
+    }
+
+    fun processRequest(type: RequestType, fullUrl: String): Flowable<JsonElement> {
+        if (!::request.isInitialized)
+            throw NullPointerException("Please call NetworkController.init() in your Application class")
+
+        return when (type) {
             is GET -> request.getRequest(fullUrl, type.queries)
             is POST -> request.postRequest(fullUrl, type.body)
             is PUT -> request.putRequest(fullUrl, type.body)
             is PATCH -> request.patchRequest(fullUrl, type.body)
             is DELETE -> request.deleteRequest(fullUrl)
         }
-}
-```
-
-------
-
-<a name="koin"></a>
-#### 4. KoinModule
-
-Here where we will be adding all the retrofit configrations alongside with the interceptors to be injected in the NetworkController
-```kotlin
-val dataManagerModule = module {
-    single {
-        val client = OkHttpClient.Builder()
-        
-        client.addInterceptor(
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        
-        val retrofit = Retrofit.Builder()
-            .client(client.build())
-            .baseUrl("https://google.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create()).build()
-
-        retrofit.create(APIService::class.java)
     }
 }
 ```
 
 ------
 
-<a name="model"></a>
-#### 5. Model
+<a name="builder"></a>
+#### 4. ServiceBuilder
 
-Response main model
+Here where we will be adding all the retrofit configurations alongside with the interceptors to be used in the NetworkController
 ```kotlin
-data class Model<Data>(
-    val data: Data,
-    var message: String,
-    var status: Boolean,
-    var code: Int
-)
+object ServiceBuilder {
+
+    fun buildService(interceptors: List<Interceptor>, debugTimeOut: Long, releaseTimeOut: Long): APIService {
+        val client = OkHttpClient.Builder()
+
+        interceptors.forEach {
+            client.addInterceptor(it)
+        }
+
+        client.connectTimeout(if (BuildConfig.DEBUG) debugTimeOut else releaseTimeOut, TimeUnit.SECONDS)
+            .readTimeout(if (BuildConfig.DEBUG) debugTimeOut else releaseTimeOut, TimeUnit.SECONDS)
+            .writeTimeout(if (BuildConfig.DEBUG) debugTimeOut else releaseTimeOut, TimeUnit.SECONDS).build()
+
+        val retrofit = Retrofit.Builder()
+            .client(client.build())
+            .baseUrl("https://google.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
+
+        return retrofit.create(APIService::class.java)
+    }
+}
 ```
 
 ------
+
 
 <a name="body"></a>
 #### 5. RequestBody
@@ -153,9 +154,20 @@ open class RequestBody
 ### Usage
 
 ------
+<a name="init"></a>
+#### 1. Initiation
+
+You need to init the Network-Kit inside your application class using the following line 
+```kotlin
+NetworkController.init(interceptors = listOf(), debugTimeOut = 30, releaseTimeOut = 10)
+```
+Take in consideration that there is a default values for each property so no need to pass 
+anything if your value matches the default value declared in the init() method
+
+------
 
 <a name="endpoints"></a>
-#### 1. ApiEndPoints
+#### 2. ApiEndPoints
 
 You need to have a place to add all your api endpoints alongside with the BASE_URL
 ```kotlin
@@ -171,7 +183,7 @@ object ApiEndPoints {
 ------
 
 <a name="repository"></a>
-#### 2. Repository
+#### 3. Repository
 
 From the Repository you can use NetworkController to place requests and return Flowable 
 Also you need to map the JsonElement response to Model<Data> using JsonDeserializer
@@ -187,7 +199,7 @@ class ApiManagerRepository {
 ------
 
 <a name="serializer"></a>
-#### 3. JsonDeserializer
+#### 4. JsonDeserializer
 
 This serializer is responsible for getting Model<> of your response type 
 ```kotlin
@@ -205,7 +217,7 @@ object JsonDeserializer {
 ------
 
 <a name="viewmodel"></a>
-#### 4. ViewModel
+#### 5. ViewModel
 
 This serializer is responsible for getting Model<> of your response type 
 ```kotlin

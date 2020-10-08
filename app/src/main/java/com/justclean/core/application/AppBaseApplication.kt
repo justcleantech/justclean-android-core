@@ -3,7 +3,7 @@ package com.justclean.core.application
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.justclean.core.di.viewModelModule
-import com.justclean.networking.dataManagerModule
+import com.justclean.networking.NetworkController
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 
@@ -17,9 +17,9 @@ class AppBaseApplication : Application() {
         super.onCreate()
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         //TODO: Complete the things which related to your project
-
+        NetworkController.init()
         startKoin {
-            modules(listOf(dataManagerModule, viewModelModule))
+            modules(listOf(viewModelModule))
         }
     }
 }
