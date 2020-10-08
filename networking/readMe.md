@@ -234,7 +234,7 @@ Ready to use network layer      | - |
 No extra configration required  | - |
 Serves any usecase              | - |
 Project independant             | - |
--| Force you using Koin         |
+-| Force you using RxJava       |
 -| Response mapping required    |
 
 ------
@@ -249,5 +249,4 @@ We can conclude the previous comparison into the following
 #### 3. Future Enhancement
 The incoming features is including but not limited to
 * Ability to place MultiPart Form Data requests
-* Koin-free ready to use version
 * Coroutines supported version
