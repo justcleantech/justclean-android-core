@@ -16,7 +16,7 @@ interface APIService {
     fun putRequest(@Url fullUrl: String, @Body requestBody: RequestBody): Flowable<JsonElement>
 
     @PATCH()
-    fun patchRequest(@Url fullUrl: String, @Body requestBody: RequestBody): Flowable<JsonElement>
+    fun patchRequest(@Url fullUrl: String, @Body requestBody: RequestBody?): Flowable<JsonElement>
 
     @DELETE()
     fun deleteRequest(@Url fullUrl: String): Flowable<JsonElement>
