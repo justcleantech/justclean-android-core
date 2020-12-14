@@ -8,7 +8,6 @@ object ApiManagerRepository {
 
     fun getLanguages(): Flowable<Model<List<Language>>> = NetworkController
         .processRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
-        .map { JsonDeserializer.getLanguages(it) }
 
 }
 
