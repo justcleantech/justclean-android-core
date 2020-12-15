@@ -6,9 +6,11 @@ import io.reactivex.Flowable
 
 object ApiManagerRepository {
 
-    fun getLanguages(): Flowable<Model<List<Language>>> = NetworkController
-        .processRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
+    fun getLanguages(): Flowable<Model<List<Language>>> =
+        NetworkController.processRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
 
+    suspend fun getSuspendLanguages(): Model<List<Language>> =
+        NetworkController.processSuspendRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
 }
 
 

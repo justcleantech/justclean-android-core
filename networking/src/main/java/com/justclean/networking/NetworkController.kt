@@ -12,10 +12,17 @@ object NetworkController {
 
     var request: APIService? = null
 
-    fun init(interceptors: List<Interceptor> = listOf(), debugTimeOut: Long = 30, releaseTimeOut: Long = 10) {
+    fun init(
+        interceptors: List<Interceptor> = listOf(),
+        debugTimeOut: Long = 30,
+        releaseTimeOut: Long = 10
+    ) {
         request = ServiceBuilder.buildService(interceptors, debugTimeOut, releaseTimeOut)
     }
 
+    /**
+     * Use it if you are using RxJava in your project
+     */
     inline fun <reified T> processRequest(type: RequestType, fullUrl: String): Flowable<T> {
         if (request == null)
             throw NullPointerException("Please call NetworkController.init() in your Application class")
@@ -30,9 +37,27 @@ object NetworkController {
 
         return response.map(object : Function<JsonElement, T> {
             override fun apply(t: JsonElement): T {
-                return Gson().fromJson(t, object: TypeToken<T>(){}.type)
+                return Gson().fromJson(t, object : TypeToken<T>() {}.type)
             }
         })
+    }
+
+    /**
+     * Use it if you are working with coroutines in your project
+     */
+    suspend inline fun <reified T> processSuspendRequest(type: RequestType, fullUrl: String): T {
+        if (request == null)
+            throw NullPointerException("Please call NetworkController.init() in your Application class")
+
+        val response = when (type) {
+            is GET -> request!!.getSuspendRequest(fullUrl, type.queries)
+            is POST -> request!!.postSuspendRequest(fullUrl, type.body)
+            is PUT -> request!!.putSuspendRequest(fullUrl, type.body)
+            is PATCH -> request!!.patchSuspendRequest(fullUrl, type.body)
+            is DELETE -> request!!.deleteSuspendRequest(fullUrl)
+        }
+
+        return Gson().fromJson(response, object : TypeToken<T>() {}.type)
     }
 
 }
