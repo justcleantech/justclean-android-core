@@ -16,8 +16,7 @@ Please use this guide to help you going through the kit and get familier with it
     1. [Initiation](#init)
     2. [ApiEndPoints](#endpoints)
     3. [Repository](#repository)
-    4. [JsonDeserializer](#serializer)
-    5. [ViewModel](#viewmodel)
+    4. [ViewModel](#viewmodel)
 
 3. [Final Thoughts](#final)
     1. [PROS & CONS](#pros)
@@ -87,23 +86,29 @@ Also give the ability to configure interceptors and timeout through init() metho
 ```kotlin
 object NetworkController {
 
-    private lateinit var request: APIService
+    var request: APIService? = null
 
     fun init(interceptors: List<Interceptor> = listOf(), debugTimeOut: Long = 30, releaseTimeOut: Long = 10) {
         request = ServiceBuilder.buildService(interceptors, debugTimeOut, releaseTimeOut)
     }
 
-    fun processRequest(type: RequestType, fullUrl: String): Flowable<JsonElement> {
-        if (!::request.isInitialized)
+    inline fun <reified T> processRequest(type: RequestType, fullUrl: String): Flowable<T> {
+        if (request == null)
             throw NullPointerException("Please call NetworkController.init() in your Application class")
 
-        return when (type) {
-            is GET -> request.getRequest(fullUrl, type.queries)
-            is POST -> request.postRequest(fullUrl, type.body)
-            is PUT -> request.putRequest(fullUrl, type.body)
-            is PATCH -> request.patchRequest(fullUrl, type.body)
-            is DELETE -> request.deleteRequest(fullUrl)
+        val response = when (type) {
+            is GET -> request!!.getRequest(fullUrl, type.queries)
+            is POST -> request!!.postRequest(fullUrl, type.body)
+            is PUT -> request!!.putRequest(fullUrl, type.body)
+            is PATCH -> request!!.patchRequest(fullUrl, type.body)
+            is DELETE -> request!!.deleteRequest(fullUrl)
         }
+
+        return response.map(object : Function<JsonElement, T> {
+            override fun apply(t: JsonElement): T {
+                return Gson().fromJson(t, object: TypeToken<T>(){}.type)
+            }
+        })
     }
 }
 ```
@@ -190,34 +195,16 @@ Also you need to map the JsonElement response to Model<Data> using JsonDeseriali
 ```kotlin
 class ApiManagerRepository {
 
-    fun getLanguages() = NetworkController.processRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
-        .map { JsonDeserializer.getLanguages(it) }
-
+    fun getLanguages(): Flowable<Model<List<Language>>> = 
+        NetworkController.processRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
+        
 }
 ```
-
-------
-
-<a name="serializer"></a>
-#### 4. JsonDeserializer
-
-This serializer is responsible for getting Model<> of your response type 
-```kotlin
-object JsonDeserializer {
-
-    fun getLanguages(json: JsonElement): Model<List<Language>> {
-        val type: Type = object : TypeToken<Model<List<Language>>>() {}.type
-        return Gson().fromJson<Model<List<Language>>>(json, type)
-    }
-    
-}
-```
-
 
 ------
 
 <a name="viewmodel"></a>
-#### 5. ViewModel
+#### 4. ViewModel
 
 This serializer is responsible for getting Model<> of your response type 
 ```kotlin
@@ -247,7 +234,6 @@ No extra configration required  | - |
 Serves any usecase              | - |
 Project independant             | - |
 -| Force you using RxJava       |
--| Response mapping required    |
 
 ------
 
