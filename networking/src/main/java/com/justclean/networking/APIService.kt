@@ -6,6 +6,7 @@ import retrofit2.http.*
 
 interface APIService {
 
+    //RxJava methods return Flowable
     @GET()
     fun getRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): Flowable<JsonElement>
 
@@ -21,4 +22,19 @@ interface APIService {
     @DELETE()
     fun deleteRequest(@Url fullUrl: String): Flowable<JsonElement>
 
+    //Coroutines methods type suspended
+    @GET()
+    suspend fun getSuspendRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): JsonElement
+
+    @POST()
+    suspend fun postSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+
+    @PUT()
+    suspend fun putSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+
+    @PATCH()
+    suspend fun patchSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+
+    @DELETE()
+    suspend fun deleteSuspendRequest(@Url fullUrl: String): JsonElement
 }
