@@ -45,7 +45,7 @@ object NetworkController {
     /**
      * Use it if you are working with coroutines in your project
      */
-    suspend inline fun <reified T> processSuspendRequest(type: RequestType, fullUrl: String): T {
+    suspend inline fun <reified T> processRequest(fullUrl: String, type: RequestType): T {
         if (request == null)
             throw NullPointerException("Please call NetworkController.init() in your Application class")
 
