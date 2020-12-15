@@ -35,8 +35,9 @@ This is the API Service Interface which contains the HTTP methods that will be u
  ```kotlin
 interface APIService {
 
+    //RxJava methods return Flowable
     @GET()
-    fun getRequest(@Url fullUrl: String, @QueryMap queries: Map<String, String>? = HashMap()): Flowable<JsonElement>
+    fun getRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): Flowable<JsonElement>
 
     @POST()
     fun postRequest(@Url fullUrl: String, @Body requestBody: RequestBody): Flowable<JsonElement>
@@ -50,6 +51,22 @@ interface APIService {
     @DELETE()
     fun deleteRequest(@Url fullUrl: String): Flowable<JsonElement>
 
+    //Coroutines methods type suspended
+    @GET()
+    suspend fun getSuspendRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): JsonElement
+
+    @POST()
+    suspend fun postSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+
+    @PUT()
+    suspend fun putSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+
+    @PATCH()
+    suspend fun patchSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+
+    @DELETE()
+    suspend fun deleteSuspendRequest(@Url fullUrl: String): JsonElement
+    
 }
 ```
 
@@ -92,6 +109,9 @@ object NetworkController {
         request = ServiceBuilder.buildService(interceptors, debugTimeOut, releaseTimeOut)
     }
 
+    /**
+     * Use it if you are using RxJava in your project
+     */
     inline fun <reified T> processRequest(type: RequestType, fullUrl: String): Flowable<T> {
         if (request == null)
             throw NullPointerException("Please call NetworkController.init() in your Application class")
@@ -106,10 +126,29 @@ object NetworkController {
 
         return response.map(object : Function<JsonElement, T> {
             override fun apply(t: JsonElement): T {
-                return Gson().fromJson(t, object: TypeToken<T>(){}.type)
+                return Gson().fromJson(t, object : TypeToken<T>() {}.type)
             }
         })
     }
+
+    /**
+     * Use it if you are working with coroutines in your project
+     */
+    suspend inline fun <reified T> processSuspendRequest(type: RequestType, fullUrl: String): T {
+        if (request == null)
+            throw NullPointerException("Please call NetworkController.init() in your Application class")
+
+        val response = when (type) {
+            is GET -> request!!.getSuspendRequest(fullUrl, type.queries)
+            is POST -> request!!.postSuspendRequest(fullUrl, type.body)
+            is PUT -> request!!.putSuspendRequest(fullUrl, type.body)
+            is PATCH -> request!!.patchSuspendRequest(fullUrl, type.body)
+            is DELETE -> request!!.deleteSuspendRequest(fullUrl)
+        }
+
+        return Gson().fromJson(response, object : TypeToken<T>() {}.type)
+    }
+
 }
 ```
 
@@ -195,9 +234,13 @@ Also you need to map the JsonElement response to Model<Data> using JsonDeseriali
 ```kotlin
 class ApiManagerRepository {
 
-    fun getLanguages(): Flowable<Model<List<Language>>> = 
+    //RxJava method
+    fun getLanguages(): Flowable<Model<List<Language>>> =
         NetworkController.processRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
-        
+
+    //Coroutine method
+    suspend fun getSuspendLanguages(): Model<List<Language>> =
+        NetworkController.processSuspendRequest(RequestType.GET(), APIEndpoints.LANGUAGES)
 }
 ```
 
@@ -216,6 +259,10 @@ This serializer is responsible for getting Model<> of your response type
       }, {
           handleError(it)
       })
+      
+  val languages: LiveData<Model<List<Language>>> = liveData {
+        emit(ApiManagerRepository.getSuspendLanguages())
+  }
 ```
 
 <a name="final"></a>
@@ -233,7 +280,7 @@ Ready to use network layer      | - |
 No extra configration required  | - |
 Serves any usecase              | - |
 Project independant             | - |
--| Force you using RxJava       |
+Work with RxJava or Coroutines  | - |
 
 ------
 
@@ -247,4 +294,3 @@ We can conclude the previous comparison into the following
 #### 3. Future Enhancement
 The incoming features is including but not limited to
 * Ability to place MultiPart Form Data requests
-* Coroutines supported version
