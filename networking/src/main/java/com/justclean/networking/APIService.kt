@@ -8,7 +8,10 @@ interface APIService {
 
     //RxJava methods return Flowable
     @GET()
-    fun getRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): Flowable<JsonElement>
+    fun getRequest(
+        @Url fullUrl: String,
+        @QueryMap queries: HashMap<String, Any>
+    ): Flowable<JsonElement>
 
     @POST()
     fun postRequest(@Url fullUrl: String, @Body requestBody: RequestBody): Flowable<JsonElement>
@@ -24,16 +27,29 @@ interface APIService {
 
     //Coroutines methods type suspended
     @GET()
-    suspend fun getSuspendRequest(@Url fullUrl: String, @QueryMap queries: HashMap<String, Any>): JsonElement
+    suspend fun getSuspendRequest(
+        @Url fullUrl: String,
+        @QueryMap queries: HashMap<String, Any>,
+        @HeaderMap headers: HashMap<String, Any>
+    ): JsonElement
 
     @POST()
-    suspend fun postSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+    suspend fun postSuspendRequest(
+        @Url fullUrl: String, @Body requestBody: RequestBody,
+        @HeaderMap headers: HashMap<String, Any>
+    ): JsonElement
 
     @PUT()
-    suspend fun putSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+    suspend fun putSuspendRequest(
+        @Url fullUrl: String, @Body requestBody: RequestBody,
+        @HeaderMap headers: HashMap<String, Any>
+    ): JsonElement
 
     @PATCH()
-    suspend fun patchSuspendRequest(@Url fullUrl: String, @Body requestBody: RequestBody): JsonElement
+    suspend fun patchSuspendRequest(
+        @Url fullUrl: String, @Body requestBody: RequestBody,
+        @HeaderMap headers: HashMap<String, Any>
+    ): JsonElement
 
     @DELETE()
     suspend fun deleteSuspendRequest(@Url fullUrl: String): JsonElement

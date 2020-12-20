@@ -50,10 +50,10 @@ object NetworkController {
             throw NullPointerException("Please call NetworkController.init() in your Application class")
 
         val response = when (type) {
-            is GET -> request!!.getSuspendRequest(fullUrl, type.queries)
-            is POST -> request!!.postSuspendRequest(fullUrl, type.body)
-            is PUT -> request!!.putSuspendRequest(fullUrl, type.body)
-            is PATCH -> request!!.patchSuspendRequest(fullUrl, type.body)
+            is GET -> request!!.getSuspendRequest(fullUrl, type.queries, type.headers)
+            is POST -> request!!.postSuspendRequest(fullUrl, type.body, type.headers)
+            is PUT -> request!!.putSuspendRequest(fullUrl, type.body, type.headers)
+            is PATCH -> request!!.patchSuspendRequest(fullUrl, type.body, type.headers)
             is DELETE -> request!!.deleteSuspendRequest(fullUrl)
         }
 
