@@ -16,8 +16,9 @@ object NetworkController {
         interceptors: List<Interceptor> = listOf(),
         debugTimeOut: Long = 30,
         releaseTimeOut: Long = 10
-    ) {
+    ): NetworkController {
         request = ServiceBuilder.buildService(interceptors, debugTimeOut, releaseTimeOut)
+        return this
     }
 
     /**
