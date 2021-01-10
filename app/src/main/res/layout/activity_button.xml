@@ -6,15 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.justclean.core.ui.ButtonActivity">
 
-    <com.justclean.core.custom.JCButton
+    <com.justclean.uikit.atoms.JCButton
         android:id="@+id/jcBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_24"
-        app:jc_enabled="true"
-        app:jc_font="@font/roboto_italic"
-        app:jc_primary="true"
-        app:jc_text="@string/app_name"
+        android:backgroundTint="@color/purple_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
