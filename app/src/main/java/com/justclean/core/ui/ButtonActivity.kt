@@ -33,14 +33,9 @@ class ButtonActivity : BaseActivity() {
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
 
-        jcBtn.setLifeCycleScope(this)
         jcBtn.setOnClickListener {
-            //  jcBtn.setJcEnabled(false)
-            jcBtn.withProgress(false)
-            jcBtn.setJcText("Text Changed")
-            jcBtn.setJcSecondary()
             showToast("event clicked")
-
+            jcBtn.startLoading()
         }
         setJcInput(jcTextInput, jcTextInputTwo)
 
