@@ -16,6 +16,7 @@
         android:insetBottom="0dp"
         android:layout_margin="@dimen/space_24"
         android:text="CLICK ME!"
+        app:loadingEnabled="true"
         android:backgroundTint="@color/purple_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

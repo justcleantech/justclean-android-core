@@ -15,9 +15,15 @@ import com.justclean.uikit.utils.DrawableSpan
 class JCButton(context: Context, attrs: AttributeSet) :
     MaterialButton(context, attrs), View.OnClickListener {
 
+    private var loadingEnabled = false
+    private var isLoading = false
+    private var originalText = ""
     private var userOnClickListener: OnClickListener? = null
 
     init {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCButton, 0, 0)
+        loadingEnabled = typedArray.getBoolean(R.styleable.JCButton_loadingEnabled, false)
+        typedArray.recycle()
         setOnClickListener(this)
     }
 
@@ -29,11 +35,17 @@ class JCButton(context: Context, attrs: AttributeSet) :
     }
 
     override fun onClick(v: View?) {
-        startLoading()
+        if (loadingEnabled) startLoading()
         userOnClickListener?.onClick(v)
     }
 
     private fun startLoading() {
+        isLoading = true
+        originalText = text.toString()
+        text = getSpannableString()
+    }
+
+    private fun getSpannableString(): SpannableString {
         val lottieDrawable = getLottieDrawable()
         val drawableSpan = DrawableSpan(lottieDrawable)
         val spannableString = SpannableString(PLACEHOLDER).apply {
@@ -41,7 +53,7 @@ class JCButton(context: Context, attrs: AttributeSet) :
         }
         lottieDrawable.callback = callback
         lottieDrawable.playAnimation()
-        text = spannableString
+        return spannableString
     }
 
     private fun getLottieDrawable(): LottieDrawable {
@@ -62,6 +74,14 @@ class JCButton(context: Context, attrs: AttributeSet) :
             this@JCButton.invalidate()
         }
     }
+
+    fun reset() {
+        text = originalText
+        isEnabled = true
+        isLoading = false
+    }
+
+    fun isButtonLoading() = isLoading
 
     companion object {
         const val PLACEHOLDER = "~"

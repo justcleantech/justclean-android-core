@@ -140,6 +140,7 @@ class ButtonActivity : BaseActivity() {
     )
 
     fun materialButtonClicked(view: View) {
+        jcBtn.reset()
         if (loadingStarted)
             materialButton.endLoading()
         else
