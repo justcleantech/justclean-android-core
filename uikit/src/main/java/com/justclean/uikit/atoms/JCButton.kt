@@ -1,6 +1,8 @@
 package com.justclean.uikit.atoms
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.text.SpannableString
 import android.text.Spanned
@@ -20,11 +22,35 @@ class JCButton(context: Context, attrs: AttributeSet) :
     private var originalText = ""
     private var userOnClickListener: OnClickListener? = null
 
+    private val states = arrayOf(
+        intArrayOf(android.R.attr.state_enabled), // enabled
+        intArrayOf(-android.R.attr.state_enabled) // disabled
+    )
+
+    private val colors = intArrayOf(
+        Color.parseColor("#641bb4"), // enabled color
+        Color.parseColor("#c1a4e1") // disabled color
+    )
+
+    private val colorStates = ColorStateList(states, colors)
+
     init {
+        backgroundTintList = colorStates
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCButton, 0, 0)
         loadingEnabled = typedArray.getBoolean(R.styleable.JCButton_loadingEnabled, false)
         typedArray.recycle()
         setOnClickListener(this)
+    }
+
+    private fun setInsets() {
+        insetTop = 0
+        insetBottom = 0
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        setInsets()
+        val desiredHeight = context.resources.getDimension(R.dimen.buttonHeight).toInt()
+        setMeasuredDimension(widthMeasureSpec, desiredHeight)
     }
 
     override fun setOnClickListener(clickListener: OnClickListener?) {
@@ -35,7 +61,10 @@ class JCButton(context: Context, attrs: AttributeSet) :
     }
 
     override fun onClick(v: View?) {
-        if (loadingEnabled) startLoading()
+        if (loadingEnabled) {
+            startLoading()
+            isEnabled = false
+        }
         userOnClickListener?.onClick(v)
     }
 
@@ -58,8 +87,10 @@ class JCButton(context: Context, attrs: AttributeSet) :
 
     private fun getLottieDrawable(): LottieDrawable {
         val lottieDrawable = LottieDrawable()
-        lottieDrawable.composition = LottieCompositionFactory.fromRawResSync(context, R.raw.loader).value
-        lottieDrawable.setBounds(0, 0,
+        lottieDrawable.composition =
+            LottieCompositionFactory.fromRawResSync(context, R.raw.loader).value
+        lottieDrawable.setBounds(
+            0, 0,
             (lottieDrawable.intrinsicWidth / 3.3).toInt(),
             (lottieDrawable.intrinsicHeight / 3.3).toInt()
         )
