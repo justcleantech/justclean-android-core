@@ -14,7 +14,9 @@ import com.justclean.core.base.LayoutRes
 import com.justclean.core.custom.JCTextView
 import com.justclean.core.custom.bottomsheet.CustomBottomSheet
 import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
+import com.justclean.core.heplers.gone
 import com.justclean.core.heplers.startActivity
+import com.justclean.core.heplers.visible
 import com.justclean.core.network.MainActivity
 import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
@@ -33,8 +35,14 @@ class ButtonActivity : BaseActivity() {
     override fun onActivityReady(savedInstanceState: Bundle?) {
 
         jcBtn.setOnClickListener {
-            showToast("event clicked")
+            resetText.visible()
         }
+
+        resetText.setOnClickListener {
+            jcBtn.reset()
+            it.gone()
+        }
+
         setJcInput(jcTextInput, jcTextInputTwo)
 
         txtGoToSheet.setOnClickListener {
@@ -140,7 +148,6 @@ class ButtonActivity : BaseActivity() {
     )
 
     fun materialButtonClicked(view: View) {
-        jcBtn.reset()
         if (loadingStarted)
             materialButton.endLoading()
         else
