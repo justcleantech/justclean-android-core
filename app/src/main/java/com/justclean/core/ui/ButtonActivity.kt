@@ -34,7 +34,6 @@ class ButtonActivity : BaseActivity() {
 
         jcBtn.setOnClickListener {
             showToast("event clicked")
-            jcBtn.startLoading()
         }
         setJcInput(jcTextInput, jcTextInputTwo)
 

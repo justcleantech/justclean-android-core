@@ -1,7 +1,6 @@
 package com.justclean.core.custom
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.text.SpannableString
 import android.text.Spanned
