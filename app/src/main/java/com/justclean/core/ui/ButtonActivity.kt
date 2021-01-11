@@ -20,7 +20,6 @@ import com.justclean.core.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 @LayoutRes(layout = R.layout.activity_button)
 class ButtonActivity : BaseActivity() {
     private val pattern = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*\$"

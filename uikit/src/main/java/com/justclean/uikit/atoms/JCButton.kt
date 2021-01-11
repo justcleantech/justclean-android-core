@@ -14,27 +14,37 @@ import com.justclean.uikit.utils.DrawableSpan
 class JCButton(context: Context, attrs: AttributeSet) :
     MaterialButton(context, attrs) {
 
-    /**
-     * Backup the button text to be restored when loading end
-     * Convert the progressDrawable to DrawableSpan with applying the padding
-     * Create spannableString by appending the loadingString to the button text
-     * Assign the progressDrawable callback and start the loading
-     * Set the spannableString as the new text for the button
-     */
     fun startLoading() {
-        val drawableSpan = DrawableSpan(getLottieDrawable())
-        val spannableString = SpannableString( "Jimmy").apply {
-            setSpan(drawableSpan, length -1, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        val lottieDrawable = getLottieDrawable()
+        val drawableSpan = DrawableSpan(lottieDrawable)
+        val spannableString = SpannableString(PLACEHOLDER).apply {
+            setSpan(drawableSpan, length - 1, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
+        lottieDrawable.callback = callback
+        lottieDrawable.playAnimation()
         text = spannableString
     }
 
-    private fun getLottieDrawable(): Drawable {
+    private fun getLottieDrawable(): LottieDrawable {
         val lottieDrawable = LottieDrawable()
-        val composition = LottieCompositionFactory.fromRawResSync(context, R.raw.loader).value
-        lottieDrawable.composition = composition
+        lottieDrawable.composition = LottieCompositionFactory.fromRawResSync(context, R.raw.loader).value
+        lottieDrawable.setBounds(0, 0,
+            (lottieDrawable.intrinsicWidth / 3.3).toInt(),
+            (lottieDrawable.intrinsicHeight / 3.3).toInt()
+        )
         lottieDrawable.repeatCount = Int.MAX_VALUE
-        lottieDrawable.playAnimation()
         return lottieDrawable
+    }
+
+    private val callback = object : Drawable.Callback {
+        override fun scheduleDrawable(who: Drawable, what: Runnable, `when`: Long) {}
+        override fun unscheduleDrawable(who: Drawable, what: Runnable) {}
+        override fun invalidateDrawable(who: Drawable) {
+            this@JCButton.invalidate()
+        }
+    }
+
+    companion object {
+        const val PLACEHOLDER = "P"
     }
 }
