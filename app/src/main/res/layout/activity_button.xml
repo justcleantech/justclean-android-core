@@ -8,8 +8,8 @@
 
     <com.justclean.uikit.atoms.JCButton
         android:id="@+id/jcBtn"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="156dp"
         android:layout_margin="@dimen/space_24"
         android:text="CLICK ME!"
         app:layout_constraintEnd_toEndOf="parent"

@@ -68,7 +68,9 @@ class JCButton(context: Context, attrs: AttributeSet) :
      */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setInsets()
-        val desiredHeight = context.resources.getDimension(R.dimen.buttonHeight).toInt()
+        val desiredHeight =
+            if (loadingEnabled) context.resources.getDimension(R.dimen.buttonHeight).toInt()
+            else heightMeasureSpec
         setMeasuredDimension(widthMeasureSpec, desiredHeight)
     }
 
@@ -131,8 +133,10 @@ class JCButton(context: Context, attrs: AttributeSet) :
      */
     private fun getLottieDrawable(): LottieDrawable {
         val lottieDrawable = LottieDrawable()
-        lottieDrawable.composition = LottieCompositionFactory.fromRawResSync(context, R.raw.loader).value
-        lottieDrawable.setBounds(0, 0,
+        lottieDrawable.composition =
+            LottieCompositionFactory.fromRawResSync(context, R.raw.loader).value
+        lottieDrawable.setBounds(
+            0, 0,
             (lottieDrawable.intrinsicWidth / 4),
             (lottieDrawable.intrinsicHeight / 4)
         )
