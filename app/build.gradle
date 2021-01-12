@@ -52,4 +52,5 @@ dependencies {
     implementation project(':core')
     implementation project(':networking')
     implementation project(':uikit')
+    lintChecks project(":lint-checks")
 }
