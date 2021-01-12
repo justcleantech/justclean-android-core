@@ -28,7 +28,7 @@ class ButtonHeightDetector : LayoutDetector() {
 
     override fun visitElement(context: XmlContext, element: Element) {
         if (element.getAttribute("app:loadingEnabled") == "true"
-            && element.getAttribute(SdkConstants.ATTR_HEIGHT) != "wrap_content")
+            && element.getAttribute(SdkConstants.ATTR_LAYOUT_HEIGHT) != "wrap_content")
             context.report(
                 issue = HEIGHT_WILL_BE_IGNORED,
                 location = context.getLocation(element),
