@@ -10,7 +10,7 @@ class ButtonHeightDetector : LayoutDetector() {
         @JvmStatic
         internal val HEIGHT_WILL_BE_IGNORED = Issue.create(
             id = "IgnoredHeightDimension",
-            briefDescription = "Make width wrap_content while using loadingEnabled = true",
+            briefDescription = "Make height wrap_content while using withLoading = true",
             explanation = "Height will be overridden to 56dp when loading is enabled so use wrap_content instead",
             category = Category.USABILITY,
             priority = 8,
@@ -27,7 +27,7 @@ class ButtonHeightDetector : LayoutDetector() {
     }
 
     override fun visitElement(context: XmlContext, element: Element) {
-        if (element.getAttribute("app:loadingEnabled") == "true"
+        if (element.getAttribute("app:withLoading") == "true"
             && element.getAttribute(SdkConstants.ATTR_LAYOUT_HEIGHT) != "wrap_content")
             context.report(
                 issue = HEIGHT_WILL_BE_IGNORED,
