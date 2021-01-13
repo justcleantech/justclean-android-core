@@ -14,11 +14,15 @@ import com.google.android.material.button.MaterialButton
 import com.justclean.uikit.R
 import com.justclean.uikit.utils.DrawableSpan
 
-class JCButton(context: Context, attrs: AttributeSet) :
+class JCButton(context: Context, attrs: AttributeSet? = null) :
     MaterialButton(context, attrs), View.OnClickListener {
 
-    private var loadingEnabled = false
+    constructor(context: Context, withLoading: Boolean = false) : this(context, null) {
+        this.withLoading = withLoading
+    }
+
     private var isLoading = false
+    private var withLoading: Boolean
     private var originalText = ""
     private var userOnClickListener: OnClickListener? = null
 
@@ -48,7 +52,7 @@ class JCButton(context: Context, attrs: AttributeSet) :
     init {
         backgroundTintList = colorStates
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCButton, 0, 0)
-        loadingEnabled = typedArray.getBoolean(R.styleable.JCButton_loadingEnabled, false)
+        withLoading = typedArray.getBoolean(R.styleable.JCButton_withLoading, false)
         typedArray.recycle()
         setOnClickListener(this)
     }
@@ -69,7 +73,7 @@ class JCButton(context: Context, attrs: AttributeSet) :
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setInsets()
         val desiredHeight =
-            if (loadingEnabled) context.resources.getDimension(R.dimen.buttonHeight).toInt()
+            if (withLoading) context.resources.getDimension(R.dimen.buttonHeight).toInt()
             else heightMeasureSpec
         setMeasuredDimension(widthMeasureSpec, desiredHeight)
     }
@@ -90,7 +94,7 @@ class JCButton(context: Context, attrs: AttributeSet) :
      * Fire user click listener
      */
     override fun onClick(v: View?) {
-        if (loadingEnabled) {
+        if (withLoading) {
             startLoading()
             isEnabled = false
         }
