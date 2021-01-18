@@ -34,15 +34,6 @@ class ButtonActivity : BaseActivity() {
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
 
-        jcBtn.setOnClickListener {
-            resetText.visible()
-        }
-
-        resetText.setOnClickListener {
-            jcBtn.reset()
-            it.gone()
-        }
-
         setJcInput(jcTextInput, jcTextInputTwo)
 
         txtGoToSheet.setOnClickListener {

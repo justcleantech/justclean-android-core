@@ -21,7 +21,6 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
         this.withLoading = withLoading
     }
 
-    private var isLoading = false
     private var withLoading: Boolean
     private var originalText = ""
     private var userOnClickListener: OnClickListener? = null
@@ -96,7 +95,6 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
     override fun onClick(v: View?) {
         if (withLoading) {
             startLoading()
-            isEnabled = false
         }
         userOnClickListener?.onClick(v)
     }
@@ -107,9 +105,10 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
      * Change text to the lottie loader
      */
     private fun startLoading() {
-        isLoading = true
+        isEnabled = false
         originalText = text.toString()
         text = getSpannableString()
+        setBackgroundColor()
     }
 
     /**
@@ -169,13 +168,19 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
     fun reset(endText: String? = null) {
         text = endText ?: originalText
         isEnabled = true
-        isLoading = false
+        setBackgroundColor()
     }
 
-    /**
-     * Indicate button loading status
-     */
-    fun isButtonLoading() = isLoading
+    private fun setBackgroundColor() {
+        backgroundTintList = ColorStateList.valueOf(
+            Color.parseColor(
+                if (isEnabled)
+                    PURPLE_ENABLED
+                else
+                    PURPLE_DISABLED
+            )
+        )
+    }
 
     companion object {
         const val PLACEHOLDER = "~"
