@@ -166,7 +166,8 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
      * Change loading indicator to off
      */
     fun reset(endText: String? = null) {
-        text = endText ?: originalText
+        originalText = endText ?: originalText
+        text = originalText
         isEnabled = true
         setBackgroundColor()
     }
