@@ -21,5 +21,13 @@ class UIDemoActivity : AppCompatActivity() {
             jcBtn.reset()
             it.gone()
         }
+
+        enable.setOnClickListener {
+            jcBtn.setButtonEnabled(true)
+        }
+
+        disable.setOnClickListener {
+            jcBtn.setButtonEnabled(false)
+        }
     }
 }
