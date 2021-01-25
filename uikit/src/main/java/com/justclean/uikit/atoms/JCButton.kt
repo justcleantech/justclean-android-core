@@ -8,6 +8,7 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieCompositionFactory
 import com.airbnb.lottie.LottieDrawable
 import com.google.android.material.button.MaterialButton
@@ -170,7 +171,7 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
         setButtonEnabled(true)
     }
 
-    private fun updateBackgroundColor() {
+    private fun updateColors() {
         backgroundTintList = ColorStateList.valueOf(
             Color.parseColor(
                 if (isEnabled)
@@ -179,11 +180,12 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
                     PURPLE_DISABLED
             )
         )
+        setTextColor(ContextCompat.getColor(context, android.R.color.white))
     }
 
     fun setButtonEnabled(enabled: Boolean) {
         isEnabled = enabled
-        updateBackgroundColor()
+        updateColors()
     }
 
     companion object {
