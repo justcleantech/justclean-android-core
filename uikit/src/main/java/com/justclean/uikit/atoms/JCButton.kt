@@ -50,7 +50,7 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
      * Setup on click listener
      */
     init {
-        backgroundTintList = colorStates
+        updateColors()
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCButton, 0, 0)
         withLoading = typedArray.getBoolean(R.styleable.JCButton_withLoading, false)
         typedArray.recycle()

@@ -16,6 +16,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_16"
+        android:focusable="true"
+        android:textColorHint="@color/text_grey"
+        app:boxStrokeColor="@color/body_dark"
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/text_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jcBtn">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cursorVisible="true"
+            android:inputType="textPassword"
+            android:textAlignment="viewStart"
+            android:textColor="@color/body_dark"
+            android:textColorHint="@color/text_grey" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:visibility="gone"
         android:id="@+id/resetBtn"
