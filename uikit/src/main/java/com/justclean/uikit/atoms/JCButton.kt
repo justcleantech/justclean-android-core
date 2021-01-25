@@ -105,10 +105,9 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
      * Change text to the lottie loader
      */
     private fun startLoading() {
-        isEnabled = false
         originalText = text.toString()
         text = getSpannableString()
-        setBackgroundColor()
+        setButtonEnabled(false)
     }
 
     /**
@@ -168,11 +167,10 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
     fun reset(endText: String? = null) {
         originalText = endText ?: originalText
         text = originalText
-        isEnabled = true
-        setBackgroundColor()
+        setButtonEnabled(true)
     }
 
-    private fun setBackgroundColor() {
+    private fun updateBackgroundColor() {
         backgroundTintList = ColorStateList.valueOf(
             Color.parseColor(
                 if (isEnabled)
@@ -181,6 +179,11 @@ class JCButton(context: Context, attrs: AttributeSet? = null) :
                     PURPLE_DISABLED
             )
         )
+    }
+
+    fun setButtonEnabled(enabled: Boolean) {
+        isEnabled = enabled
+        updateBackgroundColor()
     }
 
     companion object {
