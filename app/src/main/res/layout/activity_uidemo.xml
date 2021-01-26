@@ -1,73 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".ui.UIDemoActivity">
+<layout>
 
-    <com.justclean.uikit.atoms.JCButton
-        android:id="@+id/jcBtn"
-        android:text="Click Me!"
-        app:withLoading="true"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputLayout"
+        <variable
+            name="observer"
+            type="com.justclean.uikit.validation.ValidationObserver" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_16"
-        android:layout_marginTop="@dimen/space_16"
-        android:layout_marginEnd="@dimen/space_16"
-        android:focusable="true"
-        android:textColorHint="@color/text_grey"
-        app:boxStrokeColor="@color/body_dark"
-        app:endIconMode="clear_text"
-        app:hintTextColor="@color/text_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jcBtn">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        tools:context=".ui.UIDemoActivity">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtEmail"
+        <EditText
+            android:id="@+id/edt1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:cursorVisible="true"
+            android:hint="Username"
+            android:inputType="text"
+            android:text='@={observer.registerField("edt1")}' />
+
+        <EditText
+            android:id="@+id/edt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:text='@={observer.registerField("edt2", "email")}' />
+
+        <EditText
+            android:id="@+id/edt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:text='@={observer.registerField("edt3", "phone")}' />
+
+        <EditText
+            android:id="@+id/edt4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:textAlignment="viewStart"
-            android:textColor="@color/body_dark"
-            android:textColorHint="@color/text_grey" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text='@={observer.registerField("edt4", "password")}' />
 
-    <Button
-        android:visibility="gone"
-        android:id="@+id/resetBtn"
-        android:text="reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <com.justclean.uikit.atoms.JCButton
+            android:id="@+id/jcBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click Me!"
+            app:isEnabled="@{observer.shouldEnable}"
+            app:withLoading="true" />
 
         <Button
-            android:id="@+id/enable"
-            android:text="Enable"
+            android:id="@+id/resetBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/disable"
-            android:text="Disable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="reset"
+            android:visibility="gone" />
 
     </LinearLayout>
-
-</LinearLayout>
+</layout>

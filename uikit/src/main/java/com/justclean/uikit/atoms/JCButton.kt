@@ -9,6 +9,7 @@ import android.text.Spanned
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieCompositionFactory
 import com.airbnb.lottie.LottieDrawable
 import com.google.android.material.button.MaterialButton
