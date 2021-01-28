@@ -8,8 +8,6 @@ import com.justclean.core.databinding.ActivityUidemoBinding
 import com.justclean.core.heplers.gone
 import com.justclean.core.heplers.visible
 import com.justclean.uikit.validation.ValidationObserver
-import kotlinx.android.synthetic.main.activity_button.*
-import kotlinx.android.synthetic.main.activity_button.jcBtn
 import kotlinx.android.synthetic.main.activity_uidemo.*
 
 class UIDemoActivity : AppCompatActivity() {
