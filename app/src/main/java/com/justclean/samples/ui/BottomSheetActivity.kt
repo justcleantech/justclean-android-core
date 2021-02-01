@@ -63,7 +63,7 @@ class BottomSheetActivity : BaseActivity() {
             fastAdapter: FastAdapter<IItem<*>>,
             item: IItem<*>
         ) {
-            startActivity<MapsActivity>()
+//            startActivity<MapsActivity>()
         }
     })
 

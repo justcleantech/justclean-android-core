@@ -1,5 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.justclean.networking">
-
-    /
-</manifest>
+<manifest package="com.justclean.networking" />

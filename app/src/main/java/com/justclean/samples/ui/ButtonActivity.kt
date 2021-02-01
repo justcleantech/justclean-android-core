@@ -50,7 +50,7 @@ class ButtonActivity : BaseActivity() {
         }
 
         txtGoToMap.setOnClickListener {
-            startActivity<MapsActivity>()
+//            startActivity<MapsActivity>()
         }
         showToast(viewModel.test)
 
