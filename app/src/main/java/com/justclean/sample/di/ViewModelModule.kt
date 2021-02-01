@@ -1,7 +1,7 @@
 package com.justclean.sample.di
 
 import com.justclean.sample.network.LanguagesViewModel
-import com.justclean.core.ui.viewmodels.SampleViewModel
+import com.justclean.sample.ui.viewmodels.SampleViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
