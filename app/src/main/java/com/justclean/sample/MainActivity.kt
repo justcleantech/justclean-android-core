@@ -2,6 +2,7 @@ package com.justclean.sample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
