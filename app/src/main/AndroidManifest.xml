@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.justclean.core">
+    package="com.justclean.samples">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -12,27 +12,27 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
-        android:name="com.justclean.sample.application.AppBaseApplication"
+        android:name="com.justclean.samples.application.AppBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.justclean.sample.ui.UIDemoActivity">
+        <activity android:name="com.justclean.samples.ui.UIDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.justclean.sample.network.MainActivity" />
-        <activity android:name="com.justclean.sample.ui.RecyclerDemoActivity" />
-        <activity android:name="com.justclean.sample.ui.MapsActivity" />
-        <activity android:name="com.justclean.sample.ui.BottomSheetActivity" />
-        <activity android:name="com.justclean.sample.ui.BaseSampleFragment" />
+        <activity android:name="com.justclean.samples.network.MainActivity" />
+        <activity android:name="com.justclean.samples.ui.RecyclerDemoActivity" />
+        <activity android:name="com.justclean.samples.ui.MapsActivity" />
+        <activity android:name="com.justclean.samples.ui.BottomSheetActivity" />
+        <activity android:name="com.justclean.samples.ui.BaseSampleFragment" />
         <activity
-            android:name="com.justclean.sample.ui.ButtonActivity"
+            android:name="com.justclean.samples.ui.ButtonActivity"
             android:theme="@style/InputLayoutTheme">
 
         </activity>

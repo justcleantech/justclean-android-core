@@ -14,7 +14,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_margin="20dp"
-        tools:context="com.justclean.sample.ui.UIDemoActivity">
+        tools:context="com.justclean.samples.ui.UIDemoActivity">
 
         <EditText
             android:id="@+id/edt1"
