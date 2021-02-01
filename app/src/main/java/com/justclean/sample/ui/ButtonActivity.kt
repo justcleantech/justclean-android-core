@@ -16,7 +16,7 @@ import com.justclean.core.custom.bottomsheet.CustomBottomSheet
 import com.justclean.core.custom.bottomsheet.BottomSheetDataSource
 import com.justclean.core.heplers.startActivity
 import com.justclean.sample.network.MainActivity
-import com.justclean.core.ui.viewmodels.SampleViewModel
+import com.justclean.sample.ui.viewmodels.SampleViewModel
 import kotlinx.android.synthetic.main.activity_button.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
