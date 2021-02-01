@@ -1,4 +1,2 @@
-include ':networking'
-include ':app', ':core'
+include ':app'
 include ':uikit'
-include ':lint-checks'
