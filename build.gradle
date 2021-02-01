@@ -3,7 +3,7 @@
 buildscript {
     ext{
         lintVersion = '27.0.0' // gradle version + 23
-        kotlinVersion = '1.3.72'
+        kotlinVersion = '1.4.21'
         fastAdapterVersion = '5.0.2'
         nav_version = "2.2.2"
         rxjava2Version = "2.2.1"
@@ -31,13 +31,13 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:4.3.3'
+        classpath 'com.google.gms:google-services:4.3.5'
         // Add the dependency for the Performance Monitoring plugin
-        classpath 'com.google.firebase:perf-plugin:1.3.1'  // Performance Monitoring plugin
+        classpath 'com.google.firebase:perf-plugin:1.3.4'  // Performance Monitoring plugin
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }

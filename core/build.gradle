@@ -50,16 +50,16 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72"
-    api "com.google.android.material:material:1.1.0"
-    api 'androidx.appcompat:appcompat:1.1.0'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
-    api 'androidx.core:core-ktx:1.3.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21"
+    api "com.google.android.material:material:1.2.1"
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api 'androidx.core:core-ktx:1.3.2'
     api 'com.google.android.gms:play-services-maps:17.0.0'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    api 'com.google.android.material:material:1.2.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api 'com.google.android.material:material:1.2.1'
     api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     api(
             "com.mikepenz:fastadapter:$fastAdapterVersion",
@@ -81,7 +81,7 @@ dependencies {
     )
     //paris to set views styles parametrically
     api 'com.airbnb.android:paris:1.5.0'
-    api 'com.google.android.material:material:1.2.0'
+    api 'com.google.android.material:material:1.2.1'
     api 'joda-time:joda-time:2.10.6'
     api 'com.akexorcist:localizationactivity:1.2.2'
     api 'com.mikepenz:materialize:1.2.0'
@@ -115,49 +115,7 @@ dependencies {
     // switch button
     api "com.github.angads25:toggle:$switchButtonVersion"
 
-    api "com.google.android.gms:play-services-location:17.0.0"
+    api "com.google.android.gms:play-services-location:17.1.0"
 
 
-}
-
-def githubProperties = new Properties()
-//Set env variable GPR_USER & GPR_API_KEY if not adding a properties file
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-
-def getVersionName = { ->
-    return "1.0-alpha01" // Replace with version Name
-}
-
-def getArtificatId = { ->
-    return "core" // Replace with library name ID
-}
-
-publishing {
-    publications {
-        bar(MavenPublication) {
-            groupId 'com.justclean'
-            artifactId getArtificatId()
-            version getVersionName()
-            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
-        }
-    }
-
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            /** Configure path of your package repository on Github
-             ** Replace GITHUB_USERID with your/organisation Github userID
-             ** and REPOSITORY with the repository name on GitHub
-             */
-            url = uri("https://maven.pkg.github.com/justcleantech/justclean-android-core")
-            credentials {
-                /** Create github.properties in root project folder file with
-                 ** gpr.usr=GITHUB_USER_ID & gpr.key=PERSONAL_ACCESS_TOKEN
-                 ** Set env variable GPR_USER & GPR_API_KEY if not adding a properties file**/
-
-                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
-            }
-        }
-    }
 }
