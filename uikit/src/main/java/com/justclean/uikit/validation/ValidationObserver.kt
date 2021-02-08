@@ -10,6 +10,7 @@ class ValidationObserver(private val phoneLength: Int = 8, private val passwordL
 
     private val fieldsMap = HashMap<String, ValidationField>()
     var shouldEnable = ObservableBoolean(false)
+    var countryCode: String = "KW"
 
     /**
      * Register new edit text with the id and type to observe it's changes
@@ -69,7 +70,35 @@ class ValidationObserver(private val phoneLength: Int = 8, private val passwordL
     /**
      * Validate the phone base on length assigned in the constructor
      */
-    private fun isPhoneValid(phone: String) = phone.length >= phoneLength
+    fun isPhoneValid(phone: String): Boolean {
+        return when(countryCode) {
+            "KW" -> isKuwaitPhone(phone)
+            "AE", "SA" -> isSaudiOrUAEPhone(phone)
+            "BH" -> isBahrainPhone(phone)
+            "QA" -> isQatarPhone(phone)
+            else -> false
+        }
+    }
+
+    private fun isKuwaitPhone(phone: String): Boolean {
+        val pattern = "^[569]".toRegex()
+        return pattern.containsMatchIn(phone) && phone.length == 8
+    }
+
+    private fun isSaudiOrUAEPhone(phone: String): Boolean {
+        val pattern = "^[5]".toRegex()
+        return pattern.containsMatchIn(phone) && phone.length == 9
+    }
+
+    private fun isBahrainPhone(phone: String): Boolean {
+        val pattern = "^[36]".toRegex()
+        return pattern.containsMatchIn(phone) && phone.length == 8
+    }
+
+    private fun isQatarPhone(phone: String): Boolean {
+        val pattern = "^[3567]".toRegex()
+        return pattern.containsMatchIn(phone) && phone.length == 8
+    }
 
     /**
      * Validate the password based on length assigned in the constructor
