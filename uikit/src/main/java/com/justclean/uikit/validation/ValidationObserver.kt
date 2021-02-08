@@ -72,32 +72,17 @@ class ValidationObserver(private val phoneLength: Int = 8, private val passwordL
      */
     fun isPhoneValid(phone: String): Boolean {
         return when(countryCode) {
-            "KW" -> isKuwaitPhone(phone)
-            "AE", "SA" -> isSaudiOrUAEPhone(phone)
-            "BH" -> isBahrainPhone(phone)
-            "QA" -> isQatarPhone(phone)
+            "KW" -> matchesPattern(phone, "569")
+            "AE", "SA" -> matchesPattern(phone, "5", 9)
+            "BH" -> matchesPattern(phone, "36")
+            "QA" -> matchesPattern(phone, "3567")
             else -> true
         }
     }
 
-    private fun isKuwaitPhone(phone: String): Boolean {
-        val pattern = "^[569]".toRegex()
-        return pattern.containsMatchIn(phone) && phone.length == 8
-    }
-
-    private fun isSaudiOrUAEPhone(phone: String): Boolean {
-        val pattern = "^[5]".toRegex()
-        return pattern.containsMatchIn(phone) && phone.length == 9
-    }
-
-    private fun isBahrainPhone(phone: String): Boolean {
-        val pattern = "^[36]".toRegex()
-        return pattern.containsMatchIn(phone) && phone.length == 8
-    }
-
-    private fun isQatarPhone(phone: String): Boolean {
-        val pattern = "^[3567]".toRegex()
-        return pattern.containsMatchIn(phone) && phone.length == 8
+    private fun matchesPattern(phone: String, pattern: String, length: Int= 8): Boolean {
+        val regex = "^[$pattern]".toRegex()
+        return regex.containsMatchIn(phone) && phone.length == length
     }
 
     /**
