@@ -76,7 +76,7 @@ class ValidationObserver(private val phoneLength: Int = 8, private val passwordL
             "AE", "SA" -> isSaudiOrUAEPhone(phone)
             "BH" -> isBahrainPhone(phone)
             "QA" -> isQatarPhone(phone)
-            else -> false
+            else -> true
         }
     }
 
