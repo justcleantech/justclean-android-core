@@ -7,6 +7,7 @@ Please use this guide to help you going through the kit and get familier with it
 
 1. [Atoms](#atoms)
     1. [JCButton](#button)
+    2. [JCOTPView](#otp)
 
 2. [Engines](#engines)
     1. [ValidationObserver](#validator)
@@ -50,6 +51,41 @@ Using this binding adapter that trigger the public method `setButtonEnabled(enab
           button.setButtonEnabled(enabled)
       }
 ```
+
+<a name="otp"></a>
+#### 2. JCOTPView
+This OTP is a widget that configurable for the size of the digits from 4 to 6 and used to handling auto navigation between OTP digits and also facilate the process of setting and removing error style from all the components
+
+```xml
+        <com.justclean.uikit.atoms.JCOTPView
+            android:id="@+id/otpView"
+            app:digits="6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
+```
+And to listen for OTP Input End setup this listener 
+```kotlin
+        otpView.inputListeners = object : JCOTPView.OTPViewListeners {
+            override fun onInputEnd(otp: String) {
+                //TODO Use the otp result
+            }
+        }
+```
+You can set the error when the OTP entered is wrong using this code 
+```kotlin
+        otpView.setError("Your error message goes here")
+```
+Normally the error is removed automatically when you start typing but to do this manually use this method
+```kotlin
+        otpView.removeError()
+```
+At any point of time if you need to get the OTP from the view you can make use this
+```kotlin
+        otpView.getOTP()
+```
+
 <a name="engines"></a>
 ### Engines
 
