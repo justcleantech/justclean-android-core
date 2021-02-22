@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding.observer = validationObserver
         setUpOTPListener()
         submit.setOnClickListener {
-            otpView.markError()
+            otpView.setError(phone.text.toString())
         }
     }
 

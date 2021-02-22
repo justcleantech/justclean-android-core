@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.View.OnKeyListener
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
@@ -14,6 +15,7 @@ import com.justclean.uikit.R
 class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
 
     private val container: LinearLayout
+    private val errorText: TextView
     private var digits: List<JCDigitEntry>
     private var isApplied = false
     var inputListeners: OTPViewListeners? = null
@@ -21,6 +23,7 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
     init {
         inflate(context, R.layout.otp_view_layout, this)
         container = findViewById(R.id.containerLayout)
+        errorText = findViewById(R.id.errorText)
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.JCOTPView, 0, 0)
         val numOfDigits = typedArray.getInteger(R.styleable.JCOTPView_digits, 4)
         digits = getInputLayouts(numOfDigits)
@@ -52,6 +55,7 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
                             jcDigitEntry.editText.setText(event.displayLabel.toString())
                         goForward(index)
                     }
+                    removeError()
                 } else {
                     isApplied = false
                 }
@@ -77,10 +81,18 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
 
     fun getOTP() = digits.joinToString("") { it.editText.text.toString() }
 
-    fun markError() {
+    fun setError(error: String? = null) {
+        errorText.text = error
         digits.forEach {
-
+            it.inputLayout.error = if (error.isNullOrBlank()) " " else error
         }
+    }
+
+    fun removeError(){
+        digits.forEach {
+            it.inputLayout.error = null
+        }
+        errorText.text = null
     }
 
     interface OTPViewListeners {
