@@ -1,25 +1,27 @@
 package com.justclean.uikit.atoms
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.KeyEvent
-import android.view.View.OnKeyListener
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.widget.doBeforeTextChanged
-import androidx.core.widget.doOnTextChanged
 import com.justclean.uikit.R
+import com.justclean.uikit.views.OTPDigitEntry
 
 class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
 
     private val container: LinearLayout
     private val errorText: TextView
-    private var digits: List<JCDigitEntry>
+    private var digits: List<OTPDigitEntry>
     private var isApplied = false
     var inputListeners: OTPViewListeners? = null
 
+    /**
+     * Initiate the digits container and the error text
+     * Fetch number of digits if settled or use 4 otherwise
+     * Create the digits views and add it to the container
+     * Add the navigation handler to control the typing flow
+     */
     init {
         inflate(context, R.layout.otp_view_layout, this)
         container = findViewById(R.id.containerLayout)
@@ -31,16 +33,27 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
         typedArray.recycle()
     }
 
-    private fun getInputLayouts(numOfDigits: Int): List<JCDigitEntry> {
-        val digits = mutableListOf<JCDigitEntry>()
+    /**
+     * Create digits based on the required number
+     * Add the new digit view to the container layout
+     * Append the digit to the digits list
+     */
+    private fun getInputLayouts(numOfDigits: Int): List<OTPDigitEntry> {
+        val digits = mutableListOf<OTPDigitEntry>()
         repeat(numOfDigits) {
-            val digit = JCDigitEntry(context)
+            val digit = OTPDigitEntry(context)
             container.addView(digit)
             digits.add(digit)
         }
         return digits
     }
 
+    /**
+     * Control the navigation for the OTP View
+     * Go forward when new digit filled with number
+     * Go backward when the digit number deleted
+     * Remove the error style when start typing
+     */
     private fun addNavigationHandler() {
         digits.forEachIndexed { index, jcDigitEntry ->
             jcDigitEntry.editText.setOnKeyListener { v, keyCode, event ->
@@ -64,6 +77,11 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
         }
     }
 
+    /**
+     * Used to navigate to the next digit if exist
+     * by requesting focus for the new index
+     * If latest index reached it will delegate the OTP to the listener
+     */
     private fun goForward(index: Int) {
         val newIndex = index + 1
         if (newIndex != digits.size) {
@@ -74,13 +92,23 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
         }
     }
 
+    /**
+     * Used to navigate to the previous OTP digit by
+     * requesting focus for the previous index
+     */
     private fun goBackward(index: Int) {
         if (index != 0)
             digits[index - 1].requestFocus()
     }
 
+    /**
+     * Return the entered OTP as string at anytime
+     */
     fun getOTP() = digits.joinToString("") { it.editText.text.toString() }
 
+    /**
+     * Set error style to the OTP view and display error message
+     */
     fun setError(error: String? = null) {
         errorText.text = error
         digits.forEach {
@@ -88,6 +116,10 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
         }
     }
 
+    /**
+     * Reset the OTP view to the normal appearance
+     * Usually called when user start typing
+     */
     fun removeError(){
         digits.forEach {
             it.inputLayout.error = null
@@ -95,6 +127,9 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
         errorText.text = null
     }
 
+    /**
+     * Interface to notify the users when otp entry reached the last digit
+     */
     interface OTPViewListeners {
         fun onInputEnd(otp: String)
     }
