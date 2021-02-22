@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         validationObserver.isPhoneValid(phone.text.toString())
         binding.observer = validationObserver
         setUpOTPListener()
+        submit.setOnClickListener {
+            otpView.markError()
+        }
     }
 
     private fun setUpOTPListener() {

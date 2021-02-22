@@ -1,10 +1,12 @@
 package com.justclean.uikit.atoms
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.View.OnKeyListener
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.justclean.uikit.R
@@ -13,6 +15,7 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
 
     private val container: LinearLayout
     private var digits: List<JCDigitEntry>
+    private var isApplied = false
     var inputListeners: OTPViewListeners? = null
 
     init {
@@ -37,23 +40,23 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
 
     private fun addNavigationHandler() {
         digits.forEachIndexed { index, jcDigitEntry ->
-
-            jcDigitEntry.editText.doBeforeTextChanged { text, start, count, after ->
-
+            jcDigitEntry.editText.setOnKeyListener { v, keyCode, event ->
+                if (!isApplied) {
+                    isApplied = true
+                    if (keyCode == KeyEvent.KEYCODE_DEL) {
+                        if (!jcDigitEntry.editText.text.toString().isNullOrEmpty())
+                            jcDigitEntry.editText.text?.clear()
+                        goBackward(index)
+                    } else if (keyCode in KeyEvent.KEYCODE_0..KeyEvent.KEYCODE_9) {
+                        if (!jcDigitEntry.editText.text.toString().isNullOrEmpty())
+                            jcDigitEntry.editText.setText(event.displayLabel.toString())
+                        goForward(index)
+                    }
+                } else {
+                    isApplied = false
+                }
+                false
             }
-
-            jcDigitEntry.editText.doOnTextChanged { text, start, before, count ->
-                if (text.isNullOrEmpty())
-                    goBackward(index)
-                else
-                    goForward(index)
-            }
-//            jcDigitEntry.editText.doAfterTextChanged {
-//                if (it.isNullOrEmpty())
-//                    goBackward(index)
-//                else
-//                    goForward(index)
-//            }
         }
     }
 
@@ -70,6 +73,14 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
     private fun goBackward(index: Int) {
         if (index != 0)
             digits[index - 1].requestFocus()
+    }
+
+    fun getOTP() = digits.joinToString("") { it.editText.text.toString() }
+
+    fun markError() {
+        digits.forEach {
+
+        }
     }
 
     interface OTPViewListeners {
