@@ -28,5 +28,11 @@
             android:layout_height="wrap_content"
             app:isEnabled="@{observer.shouldEnable}" />
 
+        <com.justclean.uikit.atoms.JCOTPView
+            android:id="@+id/otpView"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </layout>
