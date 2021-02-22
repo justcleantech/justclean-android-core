@@ -3,4 +3,10 @@
     <declare-styleable name="JCButton">
         <attr name="withLoading" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="JCOTPView">
+        <attr name="digits" format="integer"/>
+        <attr name="shape" format="reference"/>
+    </declare-styleable>
+
 </resources>
