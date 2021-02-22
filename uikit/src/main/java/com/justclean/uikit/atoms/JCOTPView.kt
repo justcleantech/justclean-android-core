@@ -47,11 +47,11 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
                 if (!isApplied) {
                     isApplied = true
                     if (keyCode == KeyEvent.KEYCODE_DEL) {
-                        if (!jcDigitEntry.editText.text.toString().isNullOrEmpty())
+                        if (jcDigitEntry.editText.text.toString().isNotEmpty())
                             jcDigitEntry.editText.text?.clear()
                         goBackward(index)
                     } else if (keyCode in KeyEvent.KEYCODE_0..KeyEvent.KEYCODE_9) {
-                        if (!jcDigitEntry.editText.text.toString().isNullOrEmpty())
+                        if (jcDigitEntry.editText.text.toString().isNotEmpty())
                             jcDigitEntry.editText.setText(event.displayLabel.toString())
                         goForward(index)
                     }
