@@ -1,6 +1,5 @@
 package com.justclean.sample
 
-import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,7 +8,6 @@ import com.justclean.sample.databinding.ActivityMainBinding
 import com.justclean.uikit.atoms.JCOTPView
 import com.justclean.uikit.validation.ValidationObserver
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         val validationObserver = ValidationObserver()
         validationObserver.countryCode = "QA"
         validationObserver.isPhoneValid(phone.text.toString())
+        validationObserver.setFieldText("phone", "65159298")
+        validationObserver.setFieldText("email", "ab@jc.co")
         binding.observer = validationObserver
         setUpOTPListener()
         submit.setOnClickListener {

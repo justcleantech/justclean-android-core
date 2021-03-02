@@ -1,5 +1,7 @@
 package com.justclean.uikit.validation
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Patterns
 import androidx.databinding.Observable
 import androidx.databinding.ObservableBoolean
@@ -78,6 +80,12 @@ class ValidationObserver(private val phoneLength: Int = 8, private val passwordL
             "QA" -> matchesPattern(phone, "3567")
             else -> true
         }
+    }
+
+    fun setFieldText(id: String, text: String) {
+        Handler(Looper.getMainLooper()).postDelayed({
+            fieldsMap[id]?.field?.set(text)
+        }, 100)
     }
 
     private fun matchesPattern(phone: String, pattern: String, length: Int= 8): Boolean {
