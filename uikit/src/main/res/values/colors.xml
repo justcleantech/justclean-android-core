@@ -3,4 +3,5 @@
     <color name="disabled_purple">#c1a4e1</color>
     <color name="body_dark">#1b2431</color>
     <color name="error_red">#ff144c</color>
+    <color name="purple_primary">#641bb4</color>
 </resources>
