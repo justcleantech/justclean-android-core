@@ -22,19 +22,26 @@
             android:layout_height="wrap_content"
             android:text='@={observer.registerField("phone", "phone")}' />
 
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@={observer.registerField("email", "email")}' />
+
         <com.justclean.uikit.atoms.JCButton
             android:id="@+id/submit"
-            android:layout_margin="20sp"
+            isEnabled="@{observer.shouldEnable}"
             android:layout_width="wrap_content"
-            android:layout_height="56dp"/>
+            android:layout_height="56dp"
+            android:layout_margin="20sp" />
 
         <com.justclean.uikit.atoms.JCOTPView
             android:id="@+id/otpView"
-            app:digits="6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            app:digits="6" />
 
     </LinearLayout>
 </layout>
