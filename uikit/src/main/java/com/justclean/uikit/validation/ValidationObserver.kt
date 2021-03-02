@@ -8,7 +8,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import com.justclean.uikit.models.ValidationField
 
-class ValidationObserver(private val phoneLength: Int = 8, private val passwordLength: Int = 6) {
+class ValidationObserver(private val passwordLength: Int = 6) {
 
     private val fieldsMap = HashMap<String, ValidationField>()
     var shouldEnable = ObservableBoolean(false)
