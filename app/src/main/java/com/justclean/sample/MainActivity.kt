@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         setUpOTPListener()
         submit.setOnClickListener {
             otpView.setError(phone.text.toString())
+            otpView.clearOtp()
         }
     }
 

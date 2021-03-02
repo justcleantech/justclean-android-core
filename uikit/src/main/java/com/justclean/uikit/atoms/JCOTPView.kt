@@ -117,6 +117,14 @@ class JCOTPView(context: Context, attrs: AttributeSet? = null) : LinearLayout(co
     }
 
     /**
+     * Clear the otp digits and focus on the first entry
+     */
+    fun clearOtp(){
+        digits.forEach { it.editText.text = null }
+        digits.first().requestFocus()
+    }
+
+    /**
      * Reset the OTP view to the normal appearance
      * Usually called when user start typing
      */
