@@ -57,6 +57,6 @@ interface APIService {
     @DELETE()
     suspend fun deleteSuspendRequest(@Url fullUrl: String): JsonElement
 
-    @DELETE()
+    @HTTP(method = "DELETE", hasBody = true)
     suspend fun deleteBodySuspendRequest(@Url fullUrl: String,@Body requestBody: RequestBody): JsonElement
 }
