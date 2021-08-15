@@ -21,5 +21,6 @@ sealed class RequestType {
         val headers: HashMap<String, Any> = hashMapOf()
     ) : RequestType()
 
-    object DELETE : RequestType()
+    data class DELETEBody(val body: RequestBody = EmptyBody()) : RequestType()
+     object DELETE : RequestType()
 }

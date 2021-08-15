@@ -25,6 +25,9 @@ interface APIService {
     @DELETE()
     fun deleteRequest(@Url fullUrl: String): Flowable<JsonElement>
 
+    @DELETE()
+    fun deleteBodyRequest(@Url fullUrl: String,@Body requestBody: RequestBody): Flowable<JsonElement>
+
     //Coroutines methods type suspended
     @GET()
     suspend fun getSuspendRequest(
@@ -53,4 +56,7 @@ interface APIService {
 
     @DELETE()
     suspend fun deleteSuspendRequest(@Url fullUrl: String): JsonElement
+
+    @DELETE()
+    suspend fun deleteBodySuspendRequest(@Url fullUrl: String,@Body requestBody: RequestBody): JsonElement
 }

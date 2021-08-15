@@ -34,6 +34,7 @@ object NetworkController {
             is PUT -> request!!.putRequest(fullUrl, type.body)
             is PATCH -> request!!.patchRequest(fullUrl, type.body)
             is DELETE -> request!!.deleteRequest(fullUrl)
+            is DELETEBody -> request!!.deleteBodyRequest(fullUrl,type.body)
         }
 
         return response.map(object : Function<JsonElement, T> {
@@ -56,6 +57,7 @@ object NetworkController {
             is PUT -> request!!.putSuspendRequest(fullUrl, type.body, type.headers)
             is PATCH -> request!!.patchSuspendRequest(fullUrl, type.body, type.headers)
             is DELETE -> request!!.deleteSuspendRequest(fullUrl)
+            is DELETEBody -> request!!.deleteBodySuspendRequest(fullUrl,type.body)
         }
 
         return Gson().fromJson(response, object : TypeToken<T>() {}.type)
